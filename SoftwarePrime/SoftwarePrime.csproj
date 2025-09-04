@@ -106,7 +106,6 @@
     <Compile Include="Pantallas\Ventas\FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Ventas\ModeloVentas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
