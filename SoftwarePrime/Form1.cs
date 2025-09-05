@@ -37,14 +37,6 @@ namespace SoftwarePrime
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void txtUsuario_Leave(object sender, EventArgs e)
-        {
-            if (txtUsuario.Text == "USUARIO")
-            {
-                txtUsuario.Text = "";
-                txtUsuario.ForeColor = Color.Silver;
-            }
-        }
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
             if (txtUsuario.Text == "USUARIO")
@@ -53,6 +45,16 @@ namespace SoftwarePrime
                 txtUsuario.ForeColor = Color.Black;
             }
         }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "USUARIO")
+            {
+                txtUsuario.Text = "";
+                txtUsuario.ForeColor = Color.Silver;
+            }
+        }
+        
 
         private void txtContraceña_Leave(object sender, EventArgs e)//-------
         {

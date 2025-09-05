@@ -63,6 +63,16 @@ namespace SoftwarePrime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1486564399_close_81512 {
+            get {
+                object obj = ResourceManager.GetObject("1486564399-close_81512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrowbackbutton_79955 {
             get {
                 object obj = ResourceManager.GetObject("arrowbackbutton_79955", resourceCulture);
@@ -106,6 +116,16 @@ namespace SoftwarePrime.Properties {
         internal static System.Drawing.Bitmap window_minimize_icon_194428 {
             get {
                 object obj = ResourceManager.GetObject("window_minimize_icon_194428", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_minimize_icon_198591 {
+            get {
+                object obj = ResourceManager.GetObject("window_minimize_icon_198591", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

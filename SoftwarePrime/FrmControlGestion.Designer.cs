@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmControlGestion));
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.PanelVista = new System.Windows.Forms.Panel();
             this.panelSlideBar = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BTN_Clientes = new FontAwesome.Sharp.IconButton();
             this.btn_RRHH = new System.Windows.Forms.Button();
             this.btn_Estado_Contable = new System.Windows.Forms.Button();
             this.btn_Proveedores = new System.Windows.Forms.Button();
             this.btn_Ventas = new System.Windows.Forms.Button();
             this.btn_Compras = new System.Windows.Forms.Button();
-            this.btn_Clientes = new System.Windows.Forms.Button();
             this.btn_Usuario = new System.Windows.Forms.Button();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.BTN_Cerrar = new System.Windows.Forms.Button();
             this.BTN_Minimizar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.PanelVista = new System.Windows.Forms.Panel();
             this.panelContenedor.SuspendLayout();
             this.panelSlideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,16 +63,8 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1189, 661);
+            this.panelContenedor.Size = new System.Drawing.Size(1095, 661);
             this.panelContenedor.TabIndex = 3;
-            // 
-            // PanelVista
-            // 
-            this.PanelVista.BackColor = System.Drawing.Color.Transparent;
-            this.PanelVista.Location = new System.Drawing.Point(253, 47);
-            this.PanelVista.Name = "PanelVista";
-            this.PanelVista.Size = new System.Drawing.Size(937, 615);
-            this.PanelVista.TabIndex = 2;
             // 
             // panelSlideBar
             // 
@@ -101,12 +93,12 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.BTN_Clientes, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_RRHH, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btn_Estado_Contable, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btn_Proveedores, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btn_Ventas, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btn_Compras, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_Clientes, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_Usuario, 0, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 201);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -120,6 +112,28 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(194, 387);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // BTN_Clientes
+            // 
+            this.BTN_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_Clientes.FlatAppearance.BorderSize = 0;
+            this.BTN_Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BTN_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Clientes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Clientes.ForeColor = System.Drawing.Color.White;
+            this.BTN_Clientes.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.BTN_Clientes.IconColor = System.Drawing.Color.White;
+            this.BTN_Clientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_Clientes.IconSize = 32;
+            this.BTN_Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTN_Clientes.Location = new System.Drawing.Point(4, 4);
+            this.BTN_Clientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BTN_Clientes.Name = "BTN_Clientes";
+            this.BTN_Clientes.Size = new System.Drawing.Size(186, 49);
+            this.BTN_Clientes.TabIndex = 0;
+            this.BTN_Clientes.Text = "Clientes";
+            this.BTN_Clientes.UseVisualStyleBackColor = true;
+            this.BTN_Clientes.Click += new System.EventHandler(this.btn_Clientes_Click);
             // 
             // btn_RRHH
             // 
@@ -221,26 +235,6 @@
             this.btn_Compras.UseVisualStyleBackColor = false;
             this.btn_Compras.Click += new System.EventHandler(this.btn_Compras_Click);
             // 
-            // btn_Clientes
-            // 
-            this.btn_Clientes.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Clientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Clientes.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btn_Clientes.FlatAppearance.BorderSize = 5;
-            this.btn_Clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btn_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Clientes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clientes.ForeColor = System.Drawing.Color.White;
-            this.btn_Clientes.Location = new System.Drawing.Point(5, 5);
-            this.btn_Clientes.Name = "btn_Clientes";
-            this.btn_Clientes.Size = new System.Drawing.Size(184, 47);
-            this.btn_Clientes.TabIndex = 0;
-            this.btn_Clientes.Text = "Clientes";
-            this.btn_Clientes.UseVisualStyleBackColor = false;
-            this.btn_Clientes.Click += new System.EventHandler(this.btn_Clientes_Click);
-            // 
             // btn_Usuario
             // 
             this.btn_Usuario.BackColor = System.Drawing.Color.Black;
@@ -278,8 +272,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.BTN_Cerrar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.BTN_Minimizar, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(775, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(752, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -288,25 +282,35 @@
             // 
             // BTN_Cerrar
             // 
-            this.BTN_Cerrar.BackgroundImage = global::SoftwarePrime.Properties.Resources.cancel_close_remove_icon_178365;
+            this.BTN_Cerrar.BackColor = System.Drawing.Color.Transparent;
+            this.BTN_Cerrar.BackgroundImage = global::SoftwarePrime.Properties.Resources._1486564399_close_81512;
             this.BTN_Cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BTN_Cerrar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_Cerrar.FlatAppearance.BorderSize = 0;
+            this.BTN_Cerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_Cerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_Cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Cerrar.ForeColor = System.Drawing.Color.Transparent;
             this.BTN_Cerrar.Location = new System.Drawing.Point(77, 2);
-            this.BTN_Cerrar.Margin = new System.Windows.Forms.Padding(2);
+            this.BTN_Cerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTN_Cerrar.Name = "BTN_Cerrar";
             this.BTN_Cerrar.Size = new System.Drawing.Size(71, 25);
             this.BTN_Cerrar.TabIndex = 1;
-            this.BTN_Cerrar.UseVisualStyleBackColor = true;
+            this.BTN_Cerrar.UseVisualStyleBackColor = false;
             this.BTN_Cerrar.Click += new System.EventHandler(this.BTN_Cerrar_Click);
             // 
             // BTN_Minimizar
             // 
             this.BTN_Minimizar.BackColor = System.Drawing.Color.Transparent;
-            this.BTN_Minimizar.BackgroundImage = global::SoftwarePrime.Properties.Resources.window_minimize_icon_194428;
+            this.BTN_Minimizar.BackgroundImage = global::SoftwarePrime.Properties.Resources.window_minimize_icon_198591;
             this.BTN_Minimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BTN_Minimizar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_Minimizar.FlatAppearance.BorderSize = 0;
+            this.BTN_Minimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
+            this.BTN_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Minimizar.ForeColor = System.Drawing.Color.White;
             this.BTN_Minimizar.Location = new System.Drawing.Point(2, 2);
-            this.BTN_Minimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.BTN_Minimizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTN_Minimizar.Name = "BTN_Minimizar";
             this.BTN_Minimizar.Size = new System.Drawing.Size(71, 25);
             this.BTN_Minimizar.TabIndex = 0;
@@ -325,12 +329,20 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Control General";
             // 
+            // PanelVista
+            // 
+            this.PanelVista.BackColor = System.Drawing.Color.Transparent;
+            this.PanelVista.Location = new System.Drawing.Point(253, 47);
+            this.PanelVista.Name = "PanelVista";
+            this.PanelVista.Size = new System.Drawing.Size(937, 615);
+            this.PanelVista.TabIndex = 2;
+            // 
             // FrmControlGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1189, 661);
+            this.ClientSize = new System.Drawing.Size(1095, 661);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -359,12 +371,12 @@
         private System.Windows.Forms.Button btn_Proveedores;
         private System.Windows.Forms.Button btn_Ventas;
         private System.Windows.Forms.Button btn_Compras;
-        private System.Windows.Forms.Button btn_Clientes;
         private System.Windows.Forms.Button btn_Usuario;
         private System.Windows.Forms.Panel panelTopBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button BTN_Cerrar;
         private System.Windows.Forms.Button BTN_Minimizar;
         private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton BTN_Clientes;
     }
 }
