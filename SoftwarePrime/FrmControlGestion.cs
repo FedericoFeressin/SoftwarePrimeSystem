@@ -25,13 +25,13 @@ namespace SoftwarePrime
 
         private void btn_Clientes_Click(object sender, EventArgs e)
         {
-            PanelVista.Controls.Clear(); // Limpia el panel
-            FrmAltaClientes frmClientes = new FrmAltaClientes();
-            frmClientes.TopLevel = false; // Permite incrustar el formulario
-            frmClientes.FormBorderStyle = FormBorderStyle.None; // Sin bordes
-            frmClientes.Dock = DockStyle.Fill; // Ocupa todo el panel
-            PanelVista.Controls.Add(frmClientes); // Agrega al panel
-            frmClientes.Show(); // Muestra el formulario incrustado
+            PanelVista.Controls.Clear();
+            FrmAltaClientes frmAltaClientes = new FrmAltaClientes();
+            frmAltaClientes.TopLevel = false;
+            frmAltaClientes.FormBorderStyle = FormBorderStyle.None;
+            frmAltaClientes.Dock = DockStyle.Fill;
+            PanelVista.Controls.Add(frmAltaClientes);
+            frmAltaClientes.Show();
         }
 
         private void btn_Compras_Click(object sender, EventArgs e)
@@ -101,10 +101,6 @@ namespace SoftwarePrime
             frmUsuarios.Show();
         }
 
-
-
-        #endregion
-
         private void BTN_Cerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -114,5 +110,9 @@ namespace SoftwarePrime
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        #endregion
+
+
     }
 }

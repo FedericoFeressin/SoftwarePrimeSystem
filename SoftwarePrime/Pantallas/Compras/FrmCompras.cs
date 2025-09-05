@@ -16,5 +16,10 @@ namespace SoftwarePrime.Pantallas
         {
             InitializeComponent();
         }
+
+        private void BTN_Volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
