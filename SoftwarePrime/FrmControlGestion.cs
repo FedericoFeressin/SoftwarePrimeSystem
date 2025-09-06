@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using SoftwarePrime;
 
 namespace SoftwarePrime
 {
@@ -20,6 +21,7 @@ namespace SoftwarePrime
             InitializeComponent();
         }
 
+        #region variables globales
         //Constantes para mover el formulario
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -28,9 +30,8 @@ namespace SoftwarePrime
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
 
-
         private extern static bool ReleaseCapture();
-        
+        #endregion
 
         #region Eventos Clicks
 
@@ -123,11 +124,8 @@ namespace SoftwarePrime
             this.WindowState = FormWindowState.Minimized;
         }
 
-
-        #endregion
-
         //Código para mover el formulario
-        
+
         private void panelTopBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -139,5 +137,16 @@ namespace SoftwarePrime
                 }
             }
         }
+
+        private void Btn_Desconectar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login frmLogin = new Login();
+            frmLogin.Show();
+        }
+
+        #endregion
+
+
     }
 }

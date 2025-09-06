@@ -180,7 +180,7 @@
             this.btnAcceder.BackColor = System.Drawing.Color.White;
             this.btnAcceder.FlatAppearance.BorderSize = 0;
             this.btnAcceder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAcceder.Location = new System.Drawing.Point(88, 219);
+            this.btnAcceder.Location = new System.Drawing.Point(88, 209);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Size = new System.Drawing.Size(162, 39);
             this.btnAcceder.TabIndex = 2;
