@@ -18,11 +18,13 @@ namespace SoftwarePrime
             InitializeComponent();
             lblError.Text = "";
         }
+        
 
+        
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private static extern int SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
 
         #region Eventos Clicks
@@ -121,6 +123,26 @@ namespace SoftwarePrime
             path.AddArc(0, this.Height - radius, radius, radius, 90, 90);
 
             this.Region = new Region(path);
+        }
+
+
+
+
+        //Código para mover el formulario
+
+        //Constantes para mover el formulario
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        private void topbar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks == 1 && e.Y <= this.Height && e.Y >= 0)
+                {
+                        ReleaseCapture();
+                        SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                }
+            }
         }
     }
 }

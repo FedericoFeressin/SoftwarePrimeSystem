@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace SoftwarePrime
 {
@@ -19,9 +20,20 @@ namespace SoftwarePrime
             InitializeComponent();
         }
 
+        //Constantes para mover el formulario
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+
+
+        private extern static bool ReleaseCapture();
+        
 
         #region Eventos Clicks
-        
+
 
         private void btn_Clientes_Click(object sender, EventArgs e)
         {
@@ -111,8 +123,21 @@ namespace SoftwarePrime
             this.WindowState = FormWindowState.Minimized;
         }
 
+
         #endregion
 
-
+        //Código para mover el formulario
+        
+        private void panelTopBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks == 1 && e.Y <= this.Height && e.Y >= 0)
+                {
+                    ReleaseCapture();
+                    SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                }
+            }
+        }
     }
 }

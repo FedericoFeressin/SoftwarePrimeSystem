@@ -111,8 +111,9 @@
             this.panelTopBar.Controls.Add(this.label1);
             this.panelTopBar.Location = new System.Drawing.Point(253, 0);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(936, 50);
+            this.panelTopBar.Size = new System.Drawing.Size(919, 50);
             this.panelTopBar.TabIndex = 4;
+            this.panelTopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTopBar_MouseDown);
             // 
             // tableLayoutPanel2
             // 
@@ -135,7 +136,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Location = new System.Drawing.Point(6, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 22);
             this.label1.TabIndex = 3;

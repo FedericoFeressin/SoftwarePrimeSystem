@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.topbar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,23 +45,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.topbar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // topbar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(817, 36);
-            this.panel1.TabIndex = 0;
+            this.topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.topbar.Controls.Add(this.label2);
+            this.topbar.Controls.Add(this.button1);
+            this.topbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topbar.Location = new System.Drawing.Point(0, 0);
+            this.topbar.Name = "topbar";
+            this.topbar.Size = new System.Drawing.Size(817, 36);
+            this.topbar.TabIndex = 0;
+            this.topbar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topbar_MouseDown);
             // 
             // label2
             // 
@@ -104,7 +105,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtUsuario);
-            this.panel2.Location = new System.Drawing.Point(21, 126);
+            this.panel2.Location = new System.Drawing.Point(21, 120);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(342, 320);
             this.panel2.TabIndex = 7;
@@ -252,7 +253,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(817, 517);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.topbar);
             this.Controls.Add(this.pictureBox3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -263,8 +264,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.topbar.ResumeLayout(false);
+            this.topbar.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -276,7 +277,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel topbar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
