@@ -33,6 +33,7 @@
             this.panelSlideBar = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.Btn_Proveedores = new FontAwesome.Sharp.IconButton();
             this.Btn_EstadoContable = new FontAwesome.Sharp.IconButton();
             this.Btn_RRHH = new FontAwesome.Sharp.IconButton();
@@ -46,7 +47,6 @@
             this.Btn_Cerrar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.PanelVista = new System.Windows.Forms.Panel();
-            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.panelContenedor.SuspendLayout();
             this.panelSlideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -116,6 +116,28 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(235, 387);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // Btn_Desconectar
+            // 
+            this.Btn_Desconectar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Btn_Desconectar.FlatAppearance.BorderSize = 0;
+            this.Btn_Desconectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.Btn_Desconectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Desconectar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Desconectar.ForeColor = System.Drawing.Color.White;
+            this.Btn_Desconectar.IconChar = FontAwesome.Sharp.IconChar.SignOut;
+            this.Btn_Desconectar.IconColor = System.Drawing.Color.White;
+            this.Btn_Desconectar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_Desconectar.IconSize = 32;
+            this.Btn_Desconectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Desconectar.Location = new System.Drawing.Point(2, 338);
+            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Desconectar.Name = "Btn_Desconectar";
+            this.Btn_Desconectar.Size = new System.Drawing.Size(231, 47);
+            this.Btn_Desconectar.TabIndex = 15;
+            this.Btn_Desconectar.Text = "Desconectar";
+            this.Btn_Desconectar.UseVisualStyleBackColor = true;
+            this.Btn_Desconectar.Click += new System.EventHandler(this.Btn_Desconectar_Click);
             // 
             // Btn_Proveedores
             // 
@@ -351,32 +373,10 @@
             // PanelVista
             // 
             this.PanelVista.BackColor = System.Drawing.Color.Transparent;
-            this.PanelVista.Location = new System.Drawing.Point(253, 47);
+            this.PanelVista.Location = new System.Drawing.Point(253, 39);
             this.PanelVista.Name = "PanelVista";
-            this.PanelVista.Size = new System.Drawing.Size(937, 615);
+            this.PanelVista.Size = new System.Drawing.Size(919, 623);
             this.PanelVista.TabIndex = 2;
-            // 
-            // Btn_Desconectar
-            // 
-            this.Btn_Desconectar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Btn_Desconectar.FlatAppearance.BorderSize = 0;
-            this.Btn_Desconectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.Btn_Desconectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Desconectar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Desconectar.ForeColor = System.Drawing.Color.White;
-            this.Btn_Desconectar.IconChar = FontAwesome.Sharp.IconChar.SignOut;
-            this.Btn_Desconectar.IconColor = System.Drawing.Color.White;
-            this.Btn_Desconectar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Btn_Desconectar.IconSize = 32;
-            this.Btn_Desconectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Desconectar.Location = new System.Drawing.Point(2, 338);
-            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_Desconectar.Name = "Btn_Desconectar";
-            this.Btn_Desconectar.Size = new System.Drawing.Size(231, 47);
-            this.Btn_Desconectar.TabIndex = 15;
-            this.Btn_Desconectar.Text = "Desconectar";
-            this.Btn_Desconectar.UseVisualStyleBackColor = true;
-            this.Btn_Desconectar.Click += new System.EventHandler(this.Btn_Desconectar_Click);
             // 
             // FrmControlGestion
             // 
