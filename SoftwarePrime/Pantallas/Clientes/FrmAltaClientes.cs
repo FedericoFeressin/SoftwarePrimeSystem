@@ -18,11 +18,7 @@ namespace SoftwarePrime.Pantallas.Clientes
             InitializeComponent();
         }
 
-        private void BTN_Cerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-        }
+        
 
         private void BTN_Volver_Click(object sender, EventArgs e)
         {

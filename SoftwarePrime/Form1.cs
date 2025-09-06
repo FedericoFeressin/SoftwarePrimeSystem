@@ -48,9 +48,9 @@ namespace SoftwarePrime
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "USUARIO")
+            if (txtUsuario.Text == "")
             {
-                txtUsuario.Text = "";
+                txtUsuario.Text = "USUARIO";
                 txtUsuario.ForeColor = Color.Silver;
             }
         }
@@ -64,7 +64,9 @@ namespace SoftwarePrime
                 txtContraseña.ForeColor = Color.Silver;
                 txtContraseña.UseSystemPasswordChar = false;
             }
+
         }
+
         private void txtContraceña_Enter(object sender, EventArgs e)//-------
         {
             if (txtContraseña.Text == "CONTRASEÑA")
@@ -108,5 +110,17 @@ namespace SoftwarePrime
         }
         #endregion
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            int radius = 30; // Radio de las esquinas redondeadas
+
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(this.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(this.Width - radius, this.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, this.Height - radius, radius, radius, 90, 90);
+
+            this.Region = new Region(path);
+        }
     }
 }
