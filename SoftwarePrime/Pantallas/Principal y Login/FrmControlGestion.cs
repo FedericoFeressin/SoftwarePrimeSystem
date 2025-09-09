@@ -39,7 +39,11 @@ namespace SoftwarePrime
 
         #region Eventos Clicks
 
+        private void FrmControlGestion_Load(object sender, EventArgs e)
+        {
+            configurarRol();
 
+        }
         private void btn_Clientes_Click(object sender, EventArgs e)
         {
             PanelVista.Controls.Clear();
@@ -184,10 +188,6 @@ namespace SoftwarePrime
 
         #endregion
 
-        private void FrmControlGestion_Load(object sender, EventArgs e)
-        {
-            configurarRol();
-
-        }
+        
     }
 }

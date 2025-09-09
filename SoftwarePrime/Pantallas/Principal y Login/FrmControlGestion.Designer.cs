@@ -70,6 +70,8 @@
             // panelSlideBar
             // 
             this.panelSlideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(125)))));
+            this.panelSlideBar.BackgroundImage = global::SoftwarePrime.Properties.Resources.Captura_de_pantalla_2025_09_05_211147;
+            this.panelSlideBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelSlideBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelSlideBar.Controls.Add(this.pictureBox1);
             this.panelSlideBar.Controls.Add(this.tableLayoutPanel1);
@@ -103,7 +105,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_Compras, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btn_Clientes, 0, 0);
             this.tableLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 201);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 201);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -114,7 +116,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(235, 387);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(194, 387);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // Btn_Desconectar
@@ -133,7 +135,7 @@
             this.Btn_Desconectar.Location = new System.Drawing.Point(2, 338);
             this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Desconectar.Name = "Btn_Desconectar";
-            this.Btn_Desconectar.Size = new System.Drawing.Size(231, 47);
+            this.Btn_Desconectar.Size = new System.Drawing.Size(190, 47);
             this.Btn_Desconectar.TabIndex = 15;
             this.Btn_Desconectar.Text = "Desconectar";
             this.Btn_Desconectar.UseVisualStyleBackColor = true;
@@ -155,7 +157,7 @@
             this.btn_Proveedores.Location = new System.Drawing.Point(2, 290);
             this.btn_Proveedores.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Proveedores.Name = "btn_Proveedores";
-            this.btn_Proveedores.Size = new System.Drawing.Size(231, 44);
+            this.btn_Proveedores.Size = new System.Drawing.Size(190, 44);
             this.btn_Proveedores.TabIndex = 14;
             this.btn_Proveedores.Text = "Proveedores";
             this.btn_Proveedores.UseVisualStyleBackColor = true;
@@ -177,7 +179,7 @@
             this.btn_EstadoContable.Location = new System.Drawing.Point(2, 242);
             this.btn_EstadoContable.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EstadoContable.Name = "btn_EstadoContable";
-            this.btn_EstadoContable.Size = new System.Drawing.Size(231, 44);
+            this.btn_EstadoContable.Size = new System.Drawing.Size(190, 44);
             this.btn_EstadoContable.TabIndex = 13;
             this.btn_EstadoContable.Text = "   Estado Contable";
             this.btn_EstadoContable.UseVisualStyleBackColor = true;
@@ -199,7 +201,7 @@
             this.btn_RRHH.Location = new System.Drawing.Point(2, 194);
             this.btn_RRHH.Margin = new System.Windows.Forms.Padding(2);
             this.btn_RRHH.Name = "btn_RRHH";
-            this.btn_RRHH.Size = new System.Drawing.Size(231, 44);
+            this.btn_RRHH.Size = new System.Drawing.Size(190, 44);
             this.btn_RRHH.TabIndex = 12;
             this.btn_RRHH.Text = "RRHH";
             this.btn_RRHH.UseVisualStyleBackColor = true;
@@ -221,7 +223,7 @@
             this.btn_Usuarios.Location = new System.Drawing.Point(2, 146);
             this.btn_Usuarios.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Usuarios.Name = "btn_Usuarios";
-            this.btn_Usuarios.Size = new System.Drawing.Size(231, 44);
+            this.btn_Usuarios.Size = new System.Drawing.Size(190, 44);
             this.btn_Usuarios.TabIndex = 11;
             this.btn_Usuarios.Text = "Usuarios";
             this.btn_Usuarios.UseVisualStyleBackColor = true;
@@ -243,7 +245,7 @@
             this.btn_Ventas.Location = new System.Drawing.Point(2, 98);
             this.btn_Ventas.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Ventas.Name = "btn_Ventas";
-            this.btn_Ventas.Size = new System.Drawing.Size(231, 44);
+            this.btn_Ventas.Size = new System.Drawing.Size(190, 44);
             this.btn_Ventas.TabIndex = 10;
             this.btn_Ventas.Text = "Ventas";
             this.btn_Ventas.UseVisualStyleBackColor = true;
@@ -265,7 +267,7 @@
             this.btn_Compras.Location = new System.Drawing.Point(2, 50);
             this.btn_Compras.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Compras.Name = "btn_Compras";
-            this.btn_Compras.Size = new System.Drawing.Size(231, 44);
+            this.btn_Compras.Size = new System.Drawing.Size(190, 44);
             this.btn_Compras.TabIndex = 9;
             this.btn_Compras.Text = "Compras";
             this.btn_Compras.UseVisualStyleBackColor = true;
@@ -287,7 +289,7 @@
             this.btn_Clientes.Location = new System.Drawing.Point(2, 2);
             this.btn_Clientes.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Clientes.Name = "btn_Clientes";
-            this.btn_Clientes.Size = new System.Drawing.Size(231, 44);
+            this.btn_Clientes.Size = new System.Drawing.Size(190, 44);
             this.btn_Clientes.TabIndex = 0;
             this.btn_Clientes.Text = "Clientes";
             this.btn_Clientes.UseVisualStyleBackColor = true;
@@ -296,6 +298,7 @@
             // panelTopBar
             // 
             this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.panelTopBar.BackgroundImage = global::SoftwarePrime.Properties.Resources.Captura_de_pantalla_2025_09_05_211147;
             this.panelTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTopBar.Controls.Add(this.tableLayoutPanel2);
             this.panelTopBar.Controls.Add(this.label1);
@@ -373,9 +376,9 @@
             // PanelVista
             // 
             this.PanelVista.BackColor = System.Drawing.Color.Transparent;
-            this.PanelVista.Location = new System.Drawing.Point(253, 39);
+            this.PanelVista.Location = new System.Drawing.Point(253, 51);
             this.PanelVista.Name = "PanelVista";
-            this.PanelVista.Size = new System.Drawing.Size(919, 623);
+            this.PanelVista.Size = new System.Drawing.Size(919, 610);
             this.PanelVista.TabIndex = 2;
             // 
             // FrmControlGestion
