@@ -54,16 +54,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\ConexionBD.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Pantallas\Principal y Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Pantallas\Principal y Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmControlGestion.cs">
+    <Compile Include="Pantallas\Principal y Login\FrmControlGestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmControlGestion.Designer.cs">
+    <Compile Include="Pantallas\Principal y Login\FrmControlGestion.Designer.cs">
       <DependentUpon>FrmControlGestion.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Clientes\FrmAltaClientes.cs">
@@ -86,6 +86,7 @@
     <Compile Include="Pantallas\EstadoContable\FrmEstadoContable.Designer.cs">
       <DependentUpon>FrmEstadoContable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Principal y Login\RolUsuario.cs" />
     <Compile Include="Pantallas\Proveedores\FrmProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,10 +116,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Pantallas\Principal y Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmControlGestion.resx">
+    <EmbeddedResource Include="Pantallas\Principal y Login\FrmControlGestion.resx">
       <DependentUpon>FrmControlGestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Clientes\FrmAltaClientes.resx">

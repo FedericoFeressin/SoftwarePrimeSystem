@@ -8,6 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoftwarePrime.Pantallas.RecursosHumanos;
+using SoftwarePrime.Pantallas.Usuario;
+using SoftwarePrime;
 
 namespace SoftwarePrime
 {
@@ -18,13 +21,19 @@ namespace SoftwarePrime
             InitializeComponent();
             lblError.Text = "";
         }
-        
 
         
+
+        #region variables
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private static extern int SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        #endregion
+
+
 
 
         #region Eventos Clicks
@@ -88,12 +97,20 @@ namespace SoftwarePrime
             if (usuario == "admin123" && contrasena == "admin123") // Cambia "admin" por la contraseña que desees
             {
                 // Abrir el formulario FrmControlGestion
-                FrmControlGestion frmGestion = new FrmControlGestion();
+                FrmControlGestion frmGestion = new FrmControlGestion("ADMINISTRADOR");
                 frmGestion.Show();
 
                 // Opcional: ocultar el login en vez de cerrarlo
                 this.Hide();
             }
+            if (usuario == "empleado123" && contrasena == "empleado123")
+            {
+                FrmControlGestion frmControlGestion = new FrmControlGestion("EMPLEADO");
+                frmControlGestion.Show();
+
+                this.Hide();
+            }
+            
             else
             {
                 // Mostrar mensaje de error si las credenciales son incorrectas
@@ -110,7 +127,6 @@ namespace SoftwarePrime
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        #endregion
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -139,10 +155,14 @@ namespace SoftwarePrime
             {
                 if (e.Clicks == 1 && e.Y <= this.Height && e.Y >= 0)
                 {
-                        ReleaseCapture();
-                        SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                    ReleaseCapture();
+                    SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
                 }
             }
         }
+
+        #endregion
+
+
     }
 }

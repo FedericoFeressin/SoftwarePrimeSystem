@@ -1,5 +1,4 @@
 ﻿using SoftwarePrime.Pantallas;
-using SoftwarePrime.Pantallas.Clientes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,16 +10,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using SoftwarePrime;
+using SoftwarePrime.Pantallas.Clientes;
+using FontAwesome.Sharp;
 
 namespace SoftwarePrime
 {
     public partial class FrmControlGestion : Form
     {
-        public FrmControlGestion()
+        public string Rol { get; private set; }
+        public FrmControlGestion(string rol)
         {
-            InitializeComponent();
-        }
 
+            InitializeComponent();
+            this.Rol = rol; 
+        }
+        
         #region variables globales
         //Constantes para mover el formulario
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -147,6 +151,43 @@ namespace SoftwarePrime
 
         #endregion
 
+        #region METODOS
+        public  void configurarRol()
+        {
+            btn_Clientes.Visible = false;
+            btn_Compras.Visible = false;
+            btn_EstadoContable.Visible = false;
+            btn_Proveedores.Visible = false;
+            btn_RRHH.Visible = false;
+            btn_Usuarios.Visible = false;
+            btn_Ventas.Visible = false;
 
+            if (Rol == "ADMINISTRADOR")
+            {
+                btn_Clientes.Visible = true;
+                btn_Compras.Visible = true;
+                btn_EstadoContable.Visible = true;
+                btn_Proveedores.Visible = true;
+                btn_RRHH.Visible = true;
+                btn_Usuarios.Visible = true;
+                btn_Ventas.Visible = true;
+            }
+            else if (Rol == "EMPLEADO")
+            {
+                btn_Clientes.Visible = true;
+                btn_Compras.Visible = true;
+                btn_Proveedores.Visible = true;
+                btn_Ventas.Visible = true;
+            }
+            
+        }
+
+        #endregion
+
+        private void FrmControlGestion_Load(object sender, EventArgs e)
+        {
+            configurarRol();
+
+        }
     }
 }
