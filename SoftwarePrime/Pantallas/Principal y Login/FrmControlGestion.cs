@@ -17,11 +17,13 @@ namespace SoftwarePrime
 {
     public partial class FrmControlGestion : Form
     {
+        //Rol del usuario logueado
         public string Rol { get; private set; }
         public FrmControlGestion(string rol)
         {
 
             InitializeComponent();
+            //Asigno el rol del usuario logueado a la variable global
             this.Rol = rol; 
         }
         

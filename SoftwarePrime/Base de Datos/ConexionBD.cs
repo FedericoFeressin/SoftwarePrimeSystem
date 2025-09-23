@@ -2,11 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data;
 
-namespace SoftwarePrime.Base_de_Datos
+namespace Conexion_Base_de_Datos
 {
-    public class ConexionBD
+    public static class ConexionBD
     {
+
+        #region ConexionesBD
+        
+        private static string datasource = "DESKTOP-MJATTDP\\SQLEXPRESS";
+        private static string database = "Prime System";
+
+        // Método para obtener una NUEVA conexión
+        public static SqlConnection GetConnection()
+        {
+            string connectionString = $"Data Source={datasource};Initial Catalog={database};Trusted_Connection=True;";
+            return new SqlConnection(connectionString); // NO abrirla aquí
+        }
+        #endregion
+
+        
     }
 }

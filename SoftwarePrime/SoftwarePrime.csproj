@@ -101,6 +101,7 @@
       <DependentUpon>FrmRecursosHumanos.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\RecursosHumanos\ModeloRRHH.cs" />
+    <Compile Include="Pantallas\Usuario\ClaseSent.cs" />
     <Compile Include="Pantallas\Usuario\FrmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,5 +213,6 @@
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2025-09-05 211147.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

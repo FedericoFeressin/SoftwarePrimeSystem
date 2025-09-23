@@ -16,5 +16,17 @@ namespace SoftwarePrime.Pantallas
         {
             InitializeComponent();
         }
+        #region Eventos Clicks
+
+
+
+
+
+
+        #endregion
+        private void Btn_volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

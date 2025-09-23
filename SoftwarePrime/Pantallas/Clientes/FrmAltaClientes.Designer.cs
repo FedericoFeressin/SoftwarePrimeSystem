@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Btn_volver = new FontAwesome.Sharp.IconButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BTN_BajaLogica = new System.Windows.Forms.Button();
+            this.BTN_Modificar = new System.Windows.Forms.Button();
+            this.BTN_Agregar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,55 +49,40 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.BTN_BajaLogica = new System.Windows.Forms.Button();
-            this.BTN_Modificar = new System.Windows.Forms.Button();
-            this.BTN_Agregar = new System.Windows.Forms.Button();
             this.GrillaClientes = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PanelPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Controls.Add(this.PanelPrincipal);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(919, 606);
+            this.panel1.Size = new System.Drawing.Size(919, 610);
             this.panel1.TabIndex = 0;
             // 
-            // groupBox1
+            // PanelPrincipal
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Controls.Add(this.panel2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(919, 606);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::SoftwarePrime.Properties.Resources.Captura_de_pantalla_2025_09_05_2111471;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.GrillaClientes);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(919, 615);
-            this.panel2.TabIndex = 1;
+            this.PanelPrincipal.BackgroundImage = global::SoftwarePrime.Properties.Resources.Captura_de_pantalla_2025_09_05_2111471;
+            this.PanelPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelPrincipal.Controls.Add(this.panel3);
+            this.PanelPrincipal.Controls.Add(this.GrillaClientes);
+            this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.PanelPrincipal.Margin = new System.Windows.Forms.Padding(2);
+            this.PanelPrincipal.Name = "PanelPrincipal";
+            this.PanelPrincipal.Size = new System.Drawing.Size(919, 610);
+            this.PanelPrincipal.TabIndex = 2;
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Controls.Add(this.Btn_volver);
             this.panel3.Controls.Add(this.tableLayoutPanel1);
             this.panel3.Controls.Add(this.groupBox2);
@@ -120,6 +108,58 @@
             this.Btn_volver.TabIndex = 19;
             this.Btn_volver.UseVisualStyleBackColor = true;
             this.Btn_volver.Click += new System.EventHandler(this.BTN_Volver_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.BTN_BajaLogica, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BTN_Modificar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BTN_Agregar, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(11, 462);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(455, 51);
+            this.tableLayoutPanel1.TabIndex = 16;
+            // 
+            // BTN_BajaLogica
+            // 
+            this.BTN_BajaLogica.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BTN_BajaLogica.BackColor = System.Drawing.Color.White;
+            this.BTN_BajaLogica.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_BajaLogica.Location = new System.Drawing.Point(324, 8);
+            this.BTN_BajaLogica.Name = "BTN_BajaLogica";
+            this.BTN_BajaLogica.Size = new System.Drawing.Size(108, 34);
+            this.BTN_BajaLogica.TabIndex = 3;
+            this.BTN_BajaLogica.Text = "Baja Lógica";
+            this.BTN_BajaLogica.UseVisualStyleBackColor = false;
+            // 
+            // BTN_Modificar
+            // 
+            this.BTN_Modificar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BTN_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BTN_Modificar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Modificar.Location = new System.Drawing.Point(173, 8);
+            this.BTN_Modificar.Name = "BTN_Modificar";
+            this.BTN_Modificar.Size = new System.Drawing.Size(106, 34);
+            this.BTN_Modificar.TabIndex = 2;
+            this.BTN_Modificar.Text = "Modificar";
+            this.BTN_Modificar.UseVisualStyleBackColor = false;
+            // 
+            // BTN_Agregar
+            // 
+            this.BTN_Agregar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BTN_Agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BTN_Agregar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Agregar.Location = new System.Drawing.Point(23, 8);
+            this.BTN_Agregar.Name = "BTN_Agregar";
+            this.BTN_Agregar.Size = new System.Drawing.Size(105, 34);
+            this.BTN_Agregar.TabIndex = 1;
+            this.BTN_Agregar.Text = "Agregar";
+            this.BTN_Agregar.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
@@ -268,58 +308,6 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Gestión de Usuario";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.BTN_BajaLogica, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BTN_Modificar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BTN_Agregar, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(11, 462);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(455, 51);
-            this.tableLayoutPanel1.TabIndex = 16;
-            // 
-            // BTN_BajaLogica
-            // 
-            this.BTN_BajaLogica.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BTN_BajaLogica.BackColor = System.Drawing.Color.White;
-            this.BTN_BajaLogica.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_BajaLogica.Location = new System.Drawing.Point(324, 8);
-            this.BTN_BajaLogica.Name = "BTN_BajaLogica";
-            this.BTN_BajaLogica.Size = new System.Drawing.Size(108, 34);
-            this.BTN_BajaLogica.TabIndex = 3;
-            this.BTN_BajaLogica.Text = "Baja Lógica";
-            this.BTN_BajaLogica.UseVisualStyleBackColor = false;
-            // 
-            // BTN_Modificar
-            // 
-            this.BTN_Modificar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BTN_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.BTN_Modificar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Modificar.Location = new System.Drawing.Point(173, 8);
-            this.BTN_Modificar.Name = "BTN_Modificar";
-            this.BTN_Modificar.Size = new System.Drawing.Size(106, 34);
-            this.BTN_Modificar.TabIndex = 2;
-            this.BTN_Modificar.Text = "Modificar";
-            this.BTN_Modificar.UseVisualStyleBackColor = false;
-            // 
-            // BTN_Agregar
-            // 
-            this.BTN_Agregar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BTN_Agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.BTN_Agregar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Agregar.Location = new System.Drawing.Point(23, 8);
-            this.BTN_Agregar.Name = "BTN_Agregar";
-            this.BTN_Agregar.Size = new System.Drawing.Size(105, 34);
-            this.BTN_Agregar.TabIndex = 1;
-            this.BTN_Agregar.Text = "Agregar";
-            this.BTN_Agregar.UseVisualStyleBackColor = false;
-            // 
             // GrillaClientes
             // 
             this.GrillaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -334,20 +322,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.ClientSize = new System.Drawing.Size(919, 606);
+            this.ClientSize = new System.Drawing.Size(919, 610);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAltaClientes";
             this.Text = "FrmAltaClientes";
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.PanelPrincipal.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GrillaClientes)).EndInit();
             this.ResumeLayout(false);
 
@@ -356,10 +343,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView GrillaClientes;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PanelPrincipal;
         private System.Windows.Forms.Panel panel3;
+        private FontAwesome.Sharp.IconButton Btn_volver;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button BTN_BajaLogica;
+        private System.Windows.Forms.Button BTN_Modificar;
+        private System.Windows.Forms.Button BTN_Agregar;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TEXT_GrupoSan;
@@ -372,11 +363,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button BTN_BajaLogica;
-        private System.Windows.Forms.Button BTN_Modificar;
-        private System.Windows.Forms.Button BTN_Agregar;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private FontAwesome.Sharp.IconButton Btn_volver;
+        private System.Windows.Forms.DataGridView GrillaClientes;
     }
 }
