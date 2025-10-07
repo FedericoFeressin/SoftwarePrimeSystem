@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\ConexionBD.cs" />
+    <Compile Include="Pantallas\Compras\ClaseSentCompras.cs" />
     <Compile Include="Pantallas\Principal y Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +110,14 @@
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Usuario\ModeloUsuario.cs" />
+    <Compile Include="Pantallas\Ventas\ClaseSentVentas.cs" />
     <Compile Include="Pantallas\Ventas\FrmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\Ventas\FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Ventas\ModeloVentas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\Principal y Login\Login.resx">

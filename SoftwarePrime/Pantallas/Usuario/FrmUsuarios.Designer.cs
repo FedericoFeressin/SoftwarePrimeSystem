@@ -35,6 +35,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.RB_Inactivo = new System.Windows.Forms.RadioButton();
+            this.RB_Activo = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BTN_BajaLogica = new System.Windows.Forms.Button();
             this.BTN_Modificar = new System.Windows.Forms.Button();
@@ -53,20 +57,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Combo_Rol = new System.Windows.Forms.ComboBox();
             this.GrillaUsers = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.RB_Inactivo = new System.Windows.Forms.RadioButton();
-            this.RB_Activo = new System.Windows.Forms.RadioButton();
             this.PanelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.topbar.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaUsers)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelPrincipal
@@ -87,9 +87,9 @@
             this.panel1.Controls.Add(this.topbar);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.GrillaUsers);
-            this.panel1.Location = new System.Drawing.Point(11, 11);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 586);
+            this.panel1.Size = new System.Drawing.Size(919, 610);
             this.panel1.TabIndex = 0;
             // 
             // topbar
@@ -100,7 +100,7 @@
             this.topbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.topbar.Location = new System.Drawing.Point(0, 0);
             this.topbar.Name = "topbar";
-            this.topbar.Size = new System.Drawing.Size(895, 47);
+            this.topbar.Size = new System.Drawing.Size(919, 47);
             this.topbar.TabIndex = 20;
             // 
             // Btn_volver
@@ -125,7 +125,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(332, 13);
+            this.label6.Location = new System.Drawing.Point(344, 13);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(231, 29);
@@ -139,7 +139,7 @@
             this.panel3.Location = new System.Drawing.Point(11, 52);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(379, 521);
+            this.panel3.Size = new System.Drawing.Size(379, 547);
             this.panel3.TabIndex = 3;
             // 
             // groupBox2
@@ -154,6 +154,54 @@
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Usuarios:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox1.Location = new System.Drawing.Point(6, 273);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(361, 100);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estado:";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.RB_Inactivo, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.RB_Activo, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 39);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(346, 40);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // RB_Inactivo
+            // 
+            this.RB_Inactivo.AutoSize = true;
+            this.RB_Inactivo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RB_Inactivo.Location = new System.Drawing.Point(176, 3);
+            this.RB_Inactivo.Name = "RB_Inactivo";
+            this.RB_Inactivo.Size = new System.Drawing.Size(167, 34);
+            this.RB_Inactivo.TabIndex = 3;
+            this.RB_Inactivo.TabStop = true;
+            this.RB_Inactivo.Text = "Inactivo";
+            this.RB_Inactivo.UseVisualStyleBackColor = true;
+            // 
+            // RB_Activo
+            // 
+            this.RB_Activo.AutoSize = true;
+            this.RB_Activo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RB_Activo.Location = new System.Drawing.Point(3, 3);
+            this.RB_Activo.Name = "RB_Activo";
+            this.RB_Activo.Size = new System.Drawing.Size(167, 34);
+            this.RB_Activo.TabIndex = 2;
+            this.RB_Activo.TabStop = true;
+            this.RB_Activo.Text = "Activo";
+            this.RB_Activo.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -363,59 +411,12 @@
             this.GrillaUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaUsers.Location = new System.Drawing.Point(395, 53);
             this.GrillaUsers.Name = "GrillaUsers";
+            this.GrillaUsers.ReadOnly = true;
             this.GrillaUsers.RowHeadersWidth = 51;
-            this.GrillaUsers.Size = new System.Drawing.Size(497, 520);
+            this.GrillaUsers.Size = new System.Drawing.Size(512, 545);
             this.GrillaUsers.TabIndex = 2;
             this.GrillaUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaUsers_CellClick);
-            this.GrillaUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaUsers_CellContentClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox1.Location = new System.Drawing.Point(6, 273);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 100);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estado:";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.RB_Inactivo, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.RB_Activo, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 39);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(346, 40);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // RB_Inactivo
-            // 
-            this.RB_Inactivo.AutoSize = true;
-            this.RB_Inactivo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RB_Inactivo.Location = new System.Drawing.Point(176, 3);
-            this.RB_Inactivo.Name = "RB_Inactivo";
-            this.RB_Inactivo.Size = new System.Drawing.Size(167, 34);
-            this.RB_Inactivo.TabIndex = 3;
-            this.RB_Inactivo.TabStop = true;
-            this.RB_Inactivo.Text = "Inactivo";
-            this.RB_Inactivo.UseVisualStyleBackColor = true;
-            // 
-            // RB_Activo
-            // 
-            this.RB_Activo.AutoSize = true;
-            this.RB_Activo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RB_Activo.Location = new System.Drawing.Point(3, 3);
-            this.RB_Activo.Name = "RB_Activo";
-            this.RB_Activo.Size = new System.Drawing.Size(167, 34);
-            this.RB_Activo.TabIndex = 2;
-            this.RB_Activo.TabStop = true;
-            this.RB_Activo.Text = "Activo";
-            this.RB_Activo.UseVisualStyleBackColor = true;
+            this.GrillaUsers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GrillaUsers_CellFormatting);
             // 
             // FrmUsuarios
             // 
@@ -433,13 +434,13 @@
             this.topbar.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaUsers)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -46,6 +46,8 @@
             this.Btn_Minimizar = new FontAwesome.Sharp.IconButton();
             this.Btn_Cerrar = new FontAwesome.Sharp.IconButton();
             this.PanelVista = new System.Windows.Forms.Panel();
+            this.LBL_User_Tipo = new System.Windows.Forms.Label();
+            this.User_Tipo = new System.Windows.Forms.Label();
             this.panelContenedor.SuspendLayout();
             this.panelSlideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -131,7 +133,7 @@
             this.Btn_Desconectar.IconSize = 32;
             this.Btn_Desconectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_Desconectar.Location = new System.Drawing.Point(2, 338);
-            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Desconectar.Name = "Btn_Desconectar";
             this.Btn_Desconectar.Size = new System.Drawing.Size(190, 47);
             this.Btn_Desconectar.TabIndex = 15;
@@ -153,7 +155,7 @@
             this.btn_Proveedores.IconSize = 32;
             this.btn_Proveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Proveedores.Location = new System.Drawing.Point(2, 290);
-            this.btn_Proveedores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Proveedores.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Proveedores.Name = "btn_Proveedores";
             this.btn_Proveedores.Size = new System.Drawing.Size(190, 44);
             this.btn_Proveedores.TabIndex = 14;
@@ -175,7 +177,7 @@
             this.btn_EstadoContable.IconSize = 32;
             this.btn_EstadoContable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_EstadoContable.Location = new System.Drawing.Point(2, 242);
-            this.btn_EstadoContable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_EstadoContable.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EstadoContable.Name = "btn_EstadoContable";
             this.btn_EstadoContable.Size = new System.Drawing.Size(190, 44);
             this.btn_EstadoContable.TabIndex = 13;
@@ -197,7 +199,7 @@
             this.btn_RRHH.IconSize = 32;
             this.btn_RRHH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_RRHH.Location = new System.Drawing.Point(2, 194);
-            this.btn_RRHH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_RRHH.Margin = new System.Windows.Forms.Padding(2);
             this.btn_RRHH.Name = "btn_RRHH";
             this.btn_RRHH.Size = new System.Drawing.Size(190, 44);
             this.btn_RRHH.TabIndex = 12;
@@ -219,7 +221,7 @@
             this.btn_Usuarios.IconSize = 32;
             this.btn_Usuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Usuarios.Location = new System.Drawing.Point(2, 146);
-            this.btn_Usuarios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Usuarios.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Usuarios.Name = "btn_Usuarios";
             this.btn_Usuarios.Size = new System.Drawing.Size(190, 44);
             this.btn_Usuarios.TabIndex = 11;
@@ -241,7 +243,7 @@
             this.btn_Ventas.IconSize = 32;
             this.btn_Ventas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Ventas.Location = new System.Drawing.Point(2, 98);
-            this.btn_Ventas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Ventas.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Ventas.Name = "btn_Ventas";
             this.btn_Ventas.Size = new System.Drawing.Size(190, 44);
             this.btn_Ventas.TabIndex = 10;
@@ -263,7 +265,7 @@
             this.btn_Compras.IconSize = 32;
             this.btn_Compras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Compras.Location = new System.Drawing.Point(2, 50);
-            this.btn_Compras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Compras.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Compras.Name = "btn_Compras";
             this.btn_Compras.Size = new System.Drawing.Size(190, 44);
             this.btn_Compras.TabIndex = 9;
@@ -285,7 +287,7 @@
             this.btn_Clientes.IconSize = 32;
             this.btn_Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Clientes.Location = new System.Drawing.Point(2, 2);
-            this.btn_Clientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Clientes.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Clientes.Name = "btn_Clientes";
             this.btn_Clientes.Size = new System.Drawing.Size(190, 44);
             this.btn_Clientes.TabIndex = 0;
@@ -298,6 +300,8 @@
             this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
             this.panelTopBar.BackgroundImage = global::SoftwarePrime.Properties.Resources.Captura_de_pantalla_2025_09_05_211147;
             this.panelTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTopBar.Controls.Add(this.User_Tipo);
+            this.panelTopBar.Controls.Add(this.LBL_User_Tipo);
             this.panelTopBar.Controls.Add(this.tableLayoutPanel2);
             this.panelTopBar.Location = new System.Drawing.Point(253, 0);
             this.panelTopBar.Name = "panelTopBar";
@@ -313,7 +317,7 @@
             this.tableLayoutPanel2.Controls.Add(this.Btn_Minimizar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.Btn_Cerrar, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(752, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -366,6 +370,27 @@
             this.PanelVista.Size = new System.Drawing.Size(919, 610);
             this.PanelVista.TabIndex = 2;
             // 
+            // LBL_User_Tipo
+            // 
+            this.LBL_User_Tipo.AutoSize = true;
+            this.LBL_User_Tipo.BackColor = System.Drawing.Color.White;
+            this.LBL_User_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_User_Tipo.Location = new System.Drawing.Point(6, 13);
+            this.LBL_User_Tipo.Name = "LBL_User_Tipo";
+            this.LBL_User_Tipo.Size = new System.Drawing.Size(68, 20);
+            this.LBL_User_Tipo.TabIndex = 5;
+            this.LBL_User_Tipo.Text = "Usuario:";
+            // 
+            // User_Tipo
+            // 
+            this.User_Tipo.AutoSize = true;
+            this.User_Tipo.BackColor = System.Drawing.Color.White;
+            this.User_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.User_Tipo.Location = new System.Drawing.Point(80, 13);
+            this.User_Tipo.Name = "User_Tipo";
+            this.User_Tipo.Size = new System.Drawing.Size(0, 20);
+            this.User_Tipo.TabIndex = 6;
+            // 
             // FrmControlGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelTopBar.ResumeLayout(false);
+            this.panelTopBar.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -407,5 +433,7 @@
         private FontAwesome.Sharp.IconButton Btn_Minimizar;
         private FontAwesome.Sharp.IconButton Btn_Cerrar;
         private FontAwesome.Sharp.IconButton Btn_Desconectar;
+        private System.Windows.Forms.Label LBL_User_Tipo;
+        private System.Windows.Forms.Label User_Tipo;
     }
 }

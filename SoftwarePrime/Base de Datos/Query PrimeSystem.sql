@@ -15,6 +15,37 @@ Create table Categorias (
     Categoria varchar (100)
 )
 
+Create table SubCategoria (
+    ID_Subacategoria int identity primary key,
+    SubCategoria varchar(50),
+    ID_Categoria int,
+    FOREIGN KEY (ID_Categoria) REFERENCES Categorias(ID_Categoria)
+)
+
+Create table H_Ventas_Detalle (
+    ID_Detalle_Remito int identity primary key,
+    ID_Remito int,
+    Cod_Art varchar(50),
+    Descr varchar(50),
+    P_Unidad varchar(50),
+    Cantidad varchar(50),
+    Precio_Por_Cantidad varchar(50),
+    FOREIGN KEY (ID_Remito) REFERENCES H_Ventas(ID_Remito),
+    FOREIGN KEY (Cod_Art) REFERENCES Articulos(Cod_Articulo)
+)
+
+create table H_Ventas (
+    ID_Remito int identity primary key,
+    Cod_Usuario int,
+    Fecha_Hora varchar(50),
+    ID_Cliente int,
+    Subtotal Varchar(50),
+    descu varchar(50),
+    Total varchar (50),
+    FOREIGN KEY (Cod_Usuario) REFERENCES Usuario(ID_Usuario),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Clientes)
+)
+
 Create table Clientes (
     ID_Clientes int identity primary key,
     Cuit int,
@@ -58,29 +89,9 @@ Create table H_Movimientos (
     FOREIGN KEY (Tip_Movimiento) REFERENCES Usuario_Tipo(ID_Usuario_Tipo) -- Se asume que Tip_Movimiento se relaciona con Usuario_Tipo
 )
 
-create table H_Ventas (
-    ID_Remito int identity primary key,
-    Cod_Usuario int,
-    Fecha_Hora varchar(50),
-    ID_Cliente int,
-    Subtotal Varchar(50),
-    descu varchar(50),
-    Total varchar (50),
-    FOREIGN KEY (Cod_Usuario) REFERENCES Usuario(ID_Usuario),
-    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Clientes)
-)
 
-Create table H_Ventas_Detalle (
-    ID_Detalle_Remito int identity primary key,
-    ID_Remito int,
-    Cod_Art varchar(50),
-    Descr varchar(50),
-    P_Unidad varchar(50),
-    Cantidad varchar(50),
-    Precio_Por_Cantidad varchar(50),
-    FOREIGN KEY (ID_Remito) REFERENCES H_Ventas(ID_Remito),
-    FOREIGN KEY (Cod_Art) REFERENCES Articulos(Cod_Articulo)
-)
+
+
 
 create table In_Out_Varios (
     ID_Movimiento int identity primary key,
@@ -109,35 +120,33 @@ Create table Stock (
     FOREIGN KEY (Cod_Articulo) REFERENCES Articulos(Cod_Articulo)
 )
 
-Create table SubCategoria (
-    ID_Subacategoria int identity primary key,
-    SubCategoria varchar(50),
-    ID_Categoria int,
-    FOREIGN KEY (ID_Categoria) REFERENCES Categorias(ID_Categoria)
-)
 
-Create table Usuario (
-    DNI int,
-    Nombre varchar(50),
-    Apellido varchar(50),
-    Telefono varchar(50),
-    Email varchar(50),
-    ID_Tipo int, -- Cambiado de varchar(50) a int para la relacion
-    Activo bit, 
-	FOREIGN KEY (ID_Tipo) REFERENCES Usuario_Tipo(ID_Usuario_Tipo)
-)
 
-Create table Usuario_Tipo (
-    ID_Usuario_Tipo int identity primary key,
-    Tipo int,
-    Descripcion varchar(50)
-)
+CREATE TABLE Usuario_Tipo (
+    ID_Usuario_Tipo INT IDENTITY PRIMARY KEY,
+    Tipo INT,
+    Descripcion VARCHAR(50)
+);
 
-select * from Usuario
-SELECT * FROM Usuario_Tipo;
+CREATE TABLE Usuario (
+    DNI INT primary key,
+    Nombre VARCHAR(50),
+    Apellido VARCHAR(50),
+    Telefono VARCHAR(50),
+    Email VARCHAR(50),
+    ID_Tipo INT, 
+    Activo BIT,
+    FOREIGN KEY (ID_Tipo) REFERENCES Usuario_Tipo(ID_Usuario_Tipo)
+);
 
-insert into Usuario (DNI, Nombre, Apellido, Telefono, Email, ID_Tipo, Activo) values (43629306, 'Federico', 'Feressin', '1164599588', 'fede@gmail.com', 2, 1);
 INSERT INTO Usuario_Tipo (Tipo, Descripcion) VALUES (1, 'Empleado');
 INSERT INTO Usuario_Tipo (Tipo, Descripcion) VALUES (2, 'Administrador');
 
+INSERT INTO Usuario (DNI, Nombre, Apellido, Telefono, Email, ID_Tipo, Activo) 
+VALUES (43629306, 'Federico', 'Feressin', '1164599588', 'fede@gmail.com', 2, 1);
+
+drop table Usuario
 drop table Usuario_Tipo
+select * from Usuario
+SELECT * FROM Usuario_Tipo;
+

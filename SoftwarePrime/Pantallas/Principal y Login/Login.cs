@@ -25,7 +25,7 @@ namespace SoftwarePrime
         
 
         #region variables
-
+        //
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -37,6 +37,7 @@ namespace SoftwarePrime
 
 
         #region Eventos Clicks
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -87,6 +88,8 @@ namespace SoftwarePrime
                 txtContraseña.UseSystemPasswordChar = true;
             }
         }
+
+
         private void btnAcceder_Click(object sender, EventArgs e)//-------
         {
             // Obtener los valores de los TextBox

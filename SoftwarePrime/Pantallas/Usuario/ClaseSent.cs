@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 
 namespace SoftwarePrime.Pantallas.Usuario
@@ -15,7 +16,7 @@ namespace SoftwarePrime.Pantallas.Usuario
     {
 
 
-        #region Sentencias SQL
+        #region Sentencias SQL para Modulo Usuario
 
         public static void InsertarUsuario(ModeloUsuario usuario)
         {
@@ -91,13 +92,20 @@ namespace SoftwarePrime.Pantallas.Usuario
                     if (filasAfectadas == 0)
                         throw new Exception("No se encontró el usuario con ese DNI.");
                 } // se cierra SqlCommand
+                MessageBox.Show("Usuario dado de baja correctamente.");
             } // se cierra SqlConnection automáticamente
+
+            
         }
 
 
 
 
         #endregion
+
+        
+
+        
 
 
 

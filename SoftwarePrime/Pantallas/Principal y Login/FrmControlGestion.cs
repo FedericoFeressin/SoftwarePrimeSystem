@@ -177,6 +177,7 @@ namespace SoftwarePrime
                 btn_RRHH.Visible = true;
                 btn_Usuarios.Visible = true;
                 btn_Ventas.Visible = true;
+
             }
             else if (Rol == "EMPLEADO")
             {

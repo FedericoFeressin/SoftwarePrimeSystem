@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SoftwarePrime.Pantallas.Compras
 {
-    internal class ModeloCompras
+    public class ModeloCompras
     {
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace Conexion_Base_de_Datos
 
         #region ConexionesBD
         
-        private static string datasource = "DESKTOP-MJATTDP\\SQLEXPRESS";
+        private static string datasource = "DESKTOP-D2AKA1A\\SQLEXPRESS";
         private static string database = "Prime System";
 
         // Método para obtener una NUEVA conexión
