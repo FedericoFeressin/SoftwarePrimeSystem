@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SoftwarePrime.Pantallas
+namespace SoftwarePrime.Pantallas.Clientes
 {
-    public partial class FrmEstadoContable : Form
+    public partial class UcClientes : UserControl
     {
-        public FrmEstadoContable()
+        public UcClientes()
         {
             InitializeComponent();
         }

@@ -21,8 +21,9 @@ namespace Conexion_Base_de_Datos
         public static SqlConnection GetConnection()
         {
             string connectionString = $"Data Source={datasource};Initial Catalog={database};Trusted_Connection=True;";
-            return new SqlConnection(connectionString); // NO abrirla aquí
+            return new SqlConnection(connectionString); //NO abrirla aquí
         }
+
         #endregion
 
         

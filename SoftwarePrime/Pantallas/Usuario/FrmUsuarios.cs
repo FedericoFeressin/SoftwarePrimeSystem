@@ -15,122 +15,107 @@ namespace SoftwarePrime.Pantallas
 {
     public partial class FrmUsuarios : Form
     {
-        private ClaseSent usuariodato = new ClaseSent();
+        private SentenciasUsuario usuariodato = new SentenciasUsuario(); // Instancia de la clase SentenciasUsuario para operaciones de usuario
 
         public FrmUsuarios()
         {
             InitializeComponent();
-            CargarUsuarios();
-            GrillaUsers.CellClick += GrillaUsers_CellClick;
-
+            MostrarUsuarios();
+            GrillaUsers.CellClick += GrillaUsers_CellClick; 
+            EstilizarGrilla();
         }
-
 
         #region Eventos Clicks
 
         private void BTN_Agregar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea agregar este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (!ValidarFormulario()) return; // Validar datos del formulario
+
+            DialogResult resultado = MessageBox.Show("¿Desea agregar este usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado != DialogResult.Yes) return;
+
+            try
             {
-                if (!ValidarFormulario())
-                    return;
-
-                int dni;
-                if (!int.TryParse(TXT_DNI.Text, out dni))
+                ModeloUsuario usuario = new ModeloUsuario // Crear instancia de ModeloUsuario
                 {
-                    MessageBox.Show("Ingrese un DNI válido.");
-                    return;
-                }
+                    DNI = int.Parse(TXT_DNI.Text), // Convertir texto a entero
+                    Nombre = TEXT_Nom.Text, // Asignar nombre
+                    Apellido = TXT_Ape.Text, // Asignar apellido
+                    Telefono = TXT_Telf.Text, // Asignar teléfono
+                    Email = TXT_Email.Text, // Asignar email
+                    ID_Tipo = Convert.ToInt32(Combo_Rol.SelectedValue), // Obtener ID del tipo de usuario
+                    Activo = RB_Activo.Checked // Asignar estado activo/inactivo
+                };
 
-                int idTipo = Combo_Rol.SelectedIndex == 0 ? 1 : 2;
-                bool activo = RB_Activo.Checked;
-
-                ModeloUsuario usuario = new ModeloUsuario(
-                    dni,
-                    TEXT_Nom.Text.Trim(),
-                    TXT_Ape.Text.Trim(),
-                    TXT_Telf.Text.Trim(),
-                    TXT_Email.Text.Trim(),
-                    idTipo,
-                    activo
-                );
-
-                try
-                {
-                    ClaseSent.InsertarUsuario(usuario);
-                    MessageBox.Show("Usuario guardado correctamente.");
-                    CargarUsuarios();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar: " + ex.Message);
-                }
-
+                new SentenciasUsuario().InsertarUsuario(usuario); // Llamar al método para insertar usuario
+                MessageBox.Show("Usuario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarUsuarios(); // Actualizar grilla de usuarios
                 LimpiarFormulario();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar usuario:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void BTN_Modificar_Click(object sender, EventArgs e)
         {
-            DialogResult mensaje = MessageBox.Show("¿Está seguro de que desea modificar este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (mensaje == DialogResult.Yes)
+            if (!ValidarFormulario()) return; // Validar datos del formulario
+
+            DialogResult resultado = MessageBox.Show("¿Desea modificar los datos del usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado != DialogResult.Yes) return;
+
+            try
             {
-                int dni;
-                if (!int.TryParse(TXT_DNI.Text, out dni))
+                ModeloUsuario usuario = new ModeloUsuario // Crear instancia de ModeloUsuario
                 {
-                    MessageBox.Show("Ingrese un DNI válido.");
-                    return;
-                }
+                    ID_Usuario = idUsuarioSeleccionado, // Usar ID del usuario seleccionado
+                    DNI = int.Parse(TXT_DNI.Text),  // Convertir texto a entero
+                    Nombre = TEXT_Nom.Text, // Asignar nombre
+                    Apellido = TXT_Ape.Text, // Asignar apellido
+                    Telefono = TXT_Telf.Text, // Asignar teléfono
+                    Email = TXT_Email.Text, // Asignar email
+                    ID_Tipo = Convert.ToInt32(Combo_Rol.SelectedValue), // Obtener ID del tipo de usuario
+                    Activo = RB_Activo.Checked // Asignar estado activo/inactivo
+                };
 
-                int idTipo = Combo_Rol.SelectedIndex == 0 ? 1 : 2;
-                bool activo = RB_Activo.Checked;
-
-                ModeloUsuario usuario = new ModeloUsuario(dni, TEXT_Nom.Text.Trim(), TXT_Ape.Text.Trim(),
-                                                          TXT_Telf.Text.Trim(), TXT_Email.Text.Trim(), idTipo, activo);
-
-                try
-                {
-                    ClaseSent.ModificarUsuario(usuario);
-                    MessageBox.Show("Usuario modificado correctamente.");
-                    CargarUsuarios();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al modificar: " + ex.Message);
-                }
+                new SentenciasUsuario().ModificarUsuario(usuario); // Llamar al método para modificar usuario
+                MessageBox.Show("Usuario modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                MostrarUsuarios(); // Actualizar grilla de usuarios
                 LimpiarFormulario();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar usuario:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void BTN_BajaLogica_Click(object sender, EventArgs e)
         {
-
-            DialogResult mensaje = MessageBox.Show("¿Está seguro de que desea dar de baja este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (mensaje == DialogResult.Yes)
+            // Validar que haya una fila seleccionada
+            if (GrillaUsers.CurrentRow == null) 
             {
-                int dni;
-                if (!int.TryParse(TXT_DNI.Text, out dni))
-                {
-                    MessageBox.Show("Ingrese un DNI válido.");
-                    return;
-                }
+                MessageBox.Show("Seleccione un usuario para dar de baja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                try
-                {
-                    BajaLogicaUsuario(dni);
-                    MessageBox.Show("Usuario dado de baja correctamente.");
-                    CargarUsuarios();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error en la baja: " + ex.Message);
-                }
+            // Confirmación
+            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea dar de baja este usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado != DialogResult.Yes) return;
+
+            try
+            {
+                int id = Convert.ToInt32(GrillaUsers.CurrentRow.Cells["ID_Usuario"].Value); // Obtener ID del usuario seleccionado
+                new SentenciasUsuario().EliminarUsuario(id); // O BajaLogicaUsuario(id)
+                MostrarUsuarios();
                 LimpiarFormulario();
-
+                MessageBox.Show("Usuario dado de baja correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al dar de baja el usuario:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -140,111 +125,44 @@ namespace SoftwarePrime.Pantallas
             this.Close();
         }
 
-
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            // Llenar ComboBox con opciones
-            Combo_Rol.Items.Add(new { Text = "Empleado", Value = 1 });
-            Combo_Rol.Items.Add(new { Text = "Administrador", Value = 2 });
-            Combo_Rol.DisplayMember = "Text";
-            Combo_Rol.ValueMember = "Value";
-            Combo_Rol.SelectedIndex = 0; // Seleccionar por defecto
+            CargarTiposUsuario();
+            MostrarUsuarios();
         }
+
+
+        private int idUsuarioSeleccionado;
 
         private void GrillaUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0) return; // Evitar errores al hacer clic en encabezados
 
-            DataGridViewRow fila = GrillaUsers.Rows[e.RowIndex];
+            DataGridViewRow fila = GrillaUsers.Rows[e.RowIndex]; // Obtener fila seleccionada
 
-            // TextBox
-            TXT_DNI.Text = fila.Cells[0].Value.ToString();
-            TEXT_Nom.Text = fila.Cells[1].Value.ToString();
-            TXT_Ape.Text = fila.Cells[2].Value.ToString();
-            TXT_Telf.Text = fila.Cells[3].Value.ToString();
-            TXT_Email.Text = fila.Cells[4].Value.ToString();
+            // Capturar ID_Usuario por nombre de columna
+            idUsuarioSeleccionado = Convert.ToInt32(fila.Cells["ID_Usuario"].Value);
 
-            // ComboBox: Tipo de usuario según el texto de la columna "Rol"
-            string rol = fila.Cells[5].Value.ToString();
-            Combo_Rol.SelectedIndex = (rol == "Empleado") ? 0 : 1; // 0=Empleado, 1=Administrador
+            TXT_DNI.Text = fila.Cells["DNI"].Value?.ToString() ?? ""; // Usar DNI de columna
+            TEXT_Nom.Text = fila.Cells["Nombre"].Value?.ToString() ?? ""; // Usar nombre de columna
+            TXT_Ape.Text = fila.Cells["Apellido"].Value?.ToString() ?? ""; // Usar apellido de columna
+            TXT_Email.Text = fila.Cells["Email"].Value?.ToString() ?? ""; // Usar email de columna
+            TXT_Telf.Text = fila.Cells["Telefono"].Value?.ToString() ?? ""; // Usar teléfono de columna
+            Combo_Rol.Text = fila.Cells["TipoUsuario"].Value?.ToString() ?? ""; // Usar tipo de usuario de columna
+            RB_Activo.Checked = Convert.ToBoolean(fila.Cells["Activo"].Value); // Usar estado activo de columna
 
-            // RadioButton: Activo/Inactivo según la columna "Estado"
-            string estado = fila.Cells[6].Value.ToString();
-            RB_Activo.Checked = (estado == "Activo");
-            RB_Inactivo.Checked = (estado == "Inactivo");
+
+            Combo_Rol.SelectedIndex = (Combo_Rol.Text == "Empleado") ? 0 : 1; // Ajustar según los valores reales
+
+            bool activo = Convert.ToBoolean(fila.Cells["Activo"].Value); // Obtener estado activo desde la columna
+            RB_Activo.Checked = activo; // Establecer radio button activo
+            RB_Inactivo.Checked = !activo; // Establecer radio button inactivo
+
         }
 
-        private void GrillaUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        { //hacer un metodo para cambiar el color de la fila segun el estado
-            //TODO: luego llamarlo en el load del formulario
 
-            // Evitar cabeceras y clicks fuera de fila
-            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            DataGridViewColumn col = GrillaUsers.Columns[e.ColumnIndex];
-
-            // Obtener identificador de columna de forma segura
-            string colName = (col.Name ?? col.DataPropertyName ?? col.HeaderText ?? string.Empty).Trim();
-
-            // Si la columna relacionada con estado es "Estado" (por header) o "Activo" (por DataPropertyName)
-            if (!string.IsNullOrEmpty(colName) &&
-                (colName.Equals("Estado", StringComparison.OrdinalIgnoreCase) ||
-                 colName.Equals("Activo", StringComparison.OrdinalIgnoreCase) ||
-                 col.HeaderText.Equals("Estado", StringComparison.OrdinalIgnoreCase)))
-            {
-                // Si el valor es nulo, no intentar convertir
-                if (e.Value == null || e.Value == DBNull.Value) return;
-
-                // 1) Si la celda contiene el texto "Activo"/"Inactivo"
-                string texto = e.Value.ToString().Trim();
-                if (texto.Equals("Activo", StringComparison.OrdinalIgnoreCase))
-                {
-                    GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-                    GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    return;
-                }
-                if (texto.Equals("Inactivo", StringComparison.OrdinalIgnoreCase))
-                {
-                    GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
-                    GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-                    return;
-                }
-
-                // 2) Si la celda viene como booleano (true/false)
-                if (e.Value is bool)
-                {
-                    bool activo = (bool)e.Value;
-                    if (activo)
-                    {
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-                    }
-                    return;
-                }
-
-                // 3) Intentar parsear por si la columna contiene "1"/"0"
-                if (int.TryParse(texto, out int num))
-                {
-                    if (num == 1)
-                    {
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
-                        GrillaUsers.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-                    }
-                }
-            }
-        }
-
-        #endregion
+        #endregion Eventos Clicks
 
         #region Métodos y Funciones
 
@@ -260,69 +178,26 @@ namespace SoftwarePrime.Pantallas
             RB_Inactivo.Checked = false;
         }
 
-        private void CargarUsuarios()
+        private void MostrarUsuarios()
+        {
+            SentenciasUsuario sentencias = new SentenciasUsuario();
+            GrillaUsers.DataSource = sentencias.MostrarUsuarios();
+        }
+
+        private void CargarTiposUsuario()
         {
             using (SqlConnection con = ConexionBD.GetConnection())
             {
-                string query = @"
-            SELECT u.DNI, u.Nombre, u.Apellido, u.Telefono, u.Email, 
-                   t.Descripcion AS Rol, 
-                   CASE WHEN u.Activo = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado
-            FROM Usuario u
-            INNER JOIN Usuario_Tipo t ON u.ID_Tipo = t.ID_Usuario_Tipo";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    GrillaUsers.DataSource = dt;
-                }
+                SqlDataAdapter da = new SqlDataAdapter("SELECT ID_Usuario_Tipo, Descripcion FROM Usuario_Tipo", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Combo_Rol.DataSource = dt;
+                Combo_Rol.DisplayMember = "Descripcion";
+                Combo_Rol.ValueMember = "ID_Usuario_Tipo";
             }
+            
         }
 
-        private void CargarRoles()
-        {
-            using (SqlConnection con = ConexionBD.GetConnection())
-            {
-                string query = "SELECT ID_Usuario_Tipo, Descripcion FROM Usuario_Tipo";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    Combo_Rol.DataSource = dt;
-                    Combo_Rol.DisplayMember = "Descripcion"; // lo que ve el usuario
-                    Combo_Rol.ValueMember = "ID_Usuario_Tipo"; // lo que se guarda en la BD
-                }
-            }
-        }
-
-        public static void BajaLogicaUsuario(int dni)
-        {
-            using (SqlConnection con = ConexionBD.GetConnection())
-            {
-                con.Open(); // Abrir la conexión
-
-                string query = @"UPDATE Usuario
-                         SET Activo = 0
-                         WHERE DNI = @DNI";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@DNI", dni);
-
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    if (filasAfectadas == 0)
-                    {
-                        throw new Exception("No se encontró el usuario con ese DNI.");
-                    }
-                }
-            }
-        }
 
         private bool ValidarFormulario()
         {
@@ -379,10 +254,24 @@ namespace SoftwarePrime.Pantallas
         }
 
 
+        private void EstilizarGrilla()
+        {
+            GrillaUsers.BorderStyle = BorderStyle.None;
+            GrillaUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            GrillaUsers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            GrillaUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            GrillaUsers.DefaultCellStyle.SelectionForeColor = Color.White;
+            GrillaUsers.BackgroundColor = Color.White;
+            GrillaUsers.EnableHeadersVisualStyles = false;
+            GrillaUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            GrillaUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
+            GrillaUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            GrillaUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            GrillaUsers.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+            GrillaUsers.RowTemplate.Height = 28;
+        }
 
 
-        #endregion
-
-        
+        #endregion Métodos y Funciones
     }
 }

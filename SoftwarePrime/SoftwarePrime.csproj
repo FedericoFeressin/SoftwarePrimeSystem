@@ -54,7 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\ConexionBD.cs" />
-    <Compile Include="Pantallas\Compras\ClaseSentCompras.cs" />
+    <Compile Include="Pantallas\Articulos\FrmArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Articulos\FrmArticulos.Designer.cs">
+      <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Articulos\ModeloArticulo.cs" />
+    <Compile Include="Pantallas\Articulos\SentenciasArticulos.cs" />
+    <Compile Include="Pantallas\Clientes\ClienteDAL.cs" />
+    <Compile Include="Pantallas\Compras\SentenciasCompras.cs" />
+    <Compile Include="Pantallas\Compras\ModeloDetalleCompra.cs" />
     <Compile Include="Pantallas\Principal y Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +91,6 @@
       <DependentUpon>FrmCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Compras\ModeloCompras.cs" />
-    <Compile Include="Pantallas\EstadoContable\FrmEstadoContable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\EstadoContable\FrmEstadoContable.Designer.cs">
-      <DependentUpon>FrmEstadoContable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Principal y Login\RolUsuario.cs" />
     <Compile Include="Pantallas\Proveedores\FrmProveedores.cs">
       <SubType>Form</SubType>
@@ -95,14 +99,13 @@
       <DependentUpon>FrmProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Proveedores\ModeloProveedores.cs" />
+    <Compile Include="Pantallas\Proveedores\ProveedorDAL.cs" />
     <Compile Include="Pantallas\RecursosHumanos\FrmRecursosHumanos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\RecursosHumanos\FrmRecursosHumanos.Designer.cs">
       <DependentUpon>FrmRecursosHumanos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\RecursosHumanos\ModeloRRHH.cs" />
-    <Compile Include="Pantallas\Usuario\ClaseSent.cs" />
     <Compile Include="Pantallas\Usuario\FrmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +113,7 @@
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Usuario\ModeloUsuario.cs" />
+    <Compile Include="Pantallas\Usuario\SentenciasUsuario.cs" />
     <Compile Include="Pantallas\Ventas\ClaseSentVentas.cs" />
     <Compile Include="Pantallas\Ventas\FrmVentas.cs">
       <SubType>Form</SubType>
@@ -117,9 +121,13 @@
     <Compile Include="Pantallas\Ventas\FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Ventas\ModeloDetalleVenta.cs" />
     <Compile Include="Pantallas\Ventas\ModeloVentas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantallas\Articulos\FrmArticulos.resx">
+      <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal y Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,9 +139,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Compras\FrmCompras.resx">
       <DependentUpon>FrmCompras.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\EstadoContable\FrmEstadoContable.resx">
-      <DependentUpon>FrmEstadoContable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Proveedores\FrmProveedores.resx">
       <DependentUpon>FrmProveedores.cs</DependentUpon>
@@ -216,6 +221,8 @@
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2025-09-05 211147.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fondo oscuro.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

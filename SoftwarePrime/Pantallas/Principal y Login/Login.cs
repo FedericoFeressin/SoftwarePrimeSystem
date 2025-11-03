@@ -34,8 +34,6 @@ namespace SoftwarePrime
         #endregion
 
 
-
-
         #region Eventos Clicks
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

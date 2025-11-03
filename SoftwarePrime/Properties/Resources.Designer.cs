@@ -123,6 +123,16 @@ namespace SoftwarePrime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondo_oscuro {
+            get {
+                object obj = ResourceManager.GetObject("fondo oscuro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Locking {
             get {
                 object obj = ResourceManager.GetObject("Locking", resourceCulture);
