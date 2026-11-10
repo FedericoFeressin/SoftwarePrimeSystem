@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SoftwarePrime.Pantallas.Articulos;
+using SoftwarePrime;
 
 namespace SoftwarePrime.Pantallas.Articulos
 {
@@ -17,10 +18,18 @@ namespace SoftwarePrime.Pantallas.Articulos
         public FrmArticulos()
         {
             InitializeComponent();
-            CargarCombos();
-            CargarGrilla();
-            EstilizarGrilla();
-            TXT_Precio_Venta.ReadOnly = true;
+
+            // Solo cargar datos si no estamos en modo diseño
+            if (!DesignMode && System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                CargarCombos();
+                CargarGrilla();
+                EstilizarGrilla();
+                if (TXT_Precio_Venta != null)
+                {
+                    TXT_Precio_Venta.ReadOnly = true;
+                }
+            }
         }
 
 
@@ -59,10 +68,133 @@ namespace SoftwarePrime.Pantallas.Articulos
 
         private void CargarGrilla()
         {
-            Grilla_Articulos.DataSource = dao.ObtenerArticulos();
-            Grilla_Articulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla_Articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            Grilla_Articulos.MultiSelect = false;
+            try
+            {
+                var articulos = dao.ObtenerArticulos();
+
+                if (articulos == null)
+                {
+                    MessageBox.Show("Error al obtener los artículos de la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Grilla_Articulos.DataSource = null;
+                    return;
+                }
+
+                Grilla_Articulos.DataSource = null;
+                Grilla_Articulos.DataSource = articulos;
+                Grilla_Articulos.AutoGenerateColumns = true;
+                Grilla_Articulos.Refresh();
+
+                Grilla_Articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                Grilla_Articulos.MultiSelect = false;
+                Grilla_Articulos.ReadOnly = true;
+                Grilla_Articulos.AllowUserToAddRows = false;
+                Grilla_Articulos.AllowUserToDeleteRows = false;
+
+                // Configurar visibilidad y orden de columnas
+                if (Grilla_Articulos.Columns.Count > 0)
+                {
+                    // Ocultar columnas que no son necesarias para el usuario
+                    OcultarColumna("ID_Articulo");
+                    OcultarColumna("ID_Categoria");
+                    OcultarColumna("ID_Subcategoria");
+                    OcultarColumna("ID_Proveedor");
+                    OcultarColumna("Activo");
+                    OcultarColumna("FechaCreacion");
+                    OcultarColumna("FechaModificacion");
+                    OcultarColumna("Cantidad");
+
+                    // Configurar encabezados de columnas
+                    configurartamaño("Descripcion", 150);
+                    ConfigurarColumna("Codigo", "Código", 150, 0);
+                    ConfigurarColumnaNumerica("Costo", "Costo", 150, "C2", DataGridViewContentAlignment.MiddleRight, 2);
+                    ConfigurarColumnaNumerica("PorcentajeGanancia", "% Ganancia", 90, "N2", DataGridViewContentAlignment.MiddleRight, 3);
+                    ConfigurarColumnaNumerica("PrecioVenta", "Precio Venta", 110, "C2", DataGridViewContentAlignment.MiddleRight, 4);
+                    ConfigurarColumna("StockMinimo", "Stock Mín.", 90, 5, DataGridViewContentAlignment.MiddleCenter);
+                    ConfigurarColumna("StockActual", "Stock Actual", 100, 6, DataGridViewContentAlignment.MiddleCenter);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los artículos: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void OcultarColumna(string nombreColumna)
+        {
+            try
+            {
+                if (Grilla_Articulos.Columns.Contains(nombreColumna))
+                {
+                    var columna = Grilla_Articulos.Columns[nombreColumna];
+                    if (columna != null)
+                    {
+                        columna.Visible = false;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void configurartamaño (string nombre, int width)
+        {
+            try
+            {
+                if (Grilla_Articulos.Columns.Contains(nombre))
+                {
+                    var columna = Grilla_Articulos.Columns[nombre];
+                    if (columna != null)
+                    {
+                        columna.Width = width;
+                    }
+                }
+            }
+            catch { }
+        }
+
+
+
+        private void ConfigurarColumna(string nombre, string headerText, int width, int displayIndex, DataGridViewContentAlignment? alignment = null)
+        {
+            try
+            {
+                if (Grilla_Articulos.Columns.Contains(nombre))
+                {
+                    var columna = Grilla_Articulos.Columns[nombre];
+                    if (columna != null)
+                    {
+                        columna.HeaderText = headerText;
+                        columna.Width = width;
+                        columna.DisplayIndex = displayIndex;
+                        if (alignment.HasValue)
+                        {
+                            columna.DefaultCellStyle.Alignment = alignment.Value;
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        
+
+        private void ConfigurarColumnaNumerica(string nombre, string headerText, int width, string formato, DataGridViewContentAlignment alignment, int displayIndex)
+        {
+            try
+            {
+                if (Grilla_Articulos.Columns.Contains(nombre))
+                {
+                    var columna = Grilla_Articulos.Columns[nombre];
+                    if (columna != null)
+                    {
+                        columna.HeaderText = headerText;
+                        columna.Width = width;
+                        columna.DefaultCellStyle.Format = formato;
+                        columna.DefaultCellStyle.Alignment = alignment;
+                        columna.DisplayIndex = displayIndex;
+                    }
+                }
+            }
+            catch { }
         }
 
 
@@ -147,8 +279,7 @@ namespace SoftwarePrime.Pantallas.Articulos
                 Descripcion = TXT_Descripcion.Text.Trim(), // Asigna la descripción del artículo
                 Cantidad = (int)Numeric_Cantidad.Value, // Asigna la cantidad del artículo
                 Costo = costo, // Asigna el costo del artículo
-                Ganancia = ganancia, // Asigna el porcentaje de ganancia
-                PrecioVenta = costo + (costo * (ganancia / 100)), // Calcula y asigna el precio de venta
+                PorcentajeGanancia = ganancia, // Asigna el porcentaje de ganancia
                 ID_Categoria = (CMB_Categoria.SelectedValue as int?) ?? 0, // Asigna la categoría seleccionada o 0 si no hay selección
                 ID_Subcategoria = (CMB_Sub_Categoria.SelectedValue as int?) ?? 0, // Asigna la subcategoría seleccionada o 0 si no hay selección
                 ID_Proveedor = (CMB_Prov.SelectedValue as int?) ?? 0 // Asigna el proveedor seleccionado o 0 si no hay selección
@@ -205,8 +336,7 @@ namespace SoftwarePrime.Pantallas.Articulos
                 Descripcion = TXT_Descripcion.Text.Trim(), // Asigna la descripción del artículo
                 Cantidad = (int)Numeric_Cantidad.Value, // Asigna la cantidad del artículo
                 Costo = costo, // Asigna el costo del artículo
-                Ganancia = porc, // Asigna el porcentaje de ganancia  
-                PrecioVenta = costo + (costo * (porc / 100)), // Calcula y asigna el precio de venta
+                PorcentajeGanancia = porc, // Asigna el porcentaje de ganancia  
                 ID_Categoria = (CMB_Categoria.SelectedValue as int?) ?? 0, // Asigna la categoría seleccionada o 0 si no hay selección
                 ID_Subcategoria = (CMB_Sub_Categoria.SelectedValue as int?) ?? 0, // Asigna la subcategoría seleccionada o 0 si no hay selección
                 ID_Proveedor = (CMB_Prov.SelectedValue as int?) ?? 0 // Asigna el proveedor seleccionado o 0 si no hay selección
@@ -289,16 +419,42 @@ namespace SoftwarePrime.Pantallas.Articulos
             var r = Grilla_Articulos.Rows[e.RowIndex]; // Obtiene la fila seleccionada
             TXT_Codigo.Text = r.Cells["Codigo"].Value?.ToString(); // Carga los datos en los campos correspondientes
             TXT_Descripcion.Text = r.Cells["Descripcion"].Value?.ToString(); // Carga la descripción
-            Numeric_Cantidad.Value = Convert.ToDecimal(r.Cells["Cantidad"].Value ?? 0); // Carga la cantidad
+
+            // Cargar cantidad desde StockActual
+            if (Grilla_Articulos.Columns.Contains("StockActual") && r.Cells["StockActual"].Value != null && r.Cells["StockActual"].Value != DBNull.Value)
+                Numeric_Cantidad.Value = Convert.ToDecimal(r.Cells["StockActual"].Value);
+            else
+                Numeric_Cantidad.Value = 0;
+
             TXT_Costo.Text = (r.Cells["Costo"].Value ?? 0).ToString(); // Carga el costo
+            TXT_Ganancia.Text = (r.Cells["PorcentajeGanancia"].Value ?? 0).ToString(); // Carga el porcentaje de ganancia
             TXT_Precio_Venta.Text = (r.Cells["PrecioVenta"].Value ?? 0).ToString(); // Carga el precio de venta
             int id = Convert.ToInt32(r.Cells["ID_Articulo"].Value); // Obtiene el ID del artículo
             CargarCamposDesdeId(id); // Carga los combos basados en el ID
         }
 
+        private void Btn_volver_Click(object sender, EventArgs e)
+        {
+            FrmControlGestion principal = (FrmControlGestion)this.ParentForm;
+            principal.MostrarBienvenida();
+            this.Close();
+        }
+
+        private void BTN_GestionarCategorias_Click(object sender, EventArgs e)
+        {
+            // Abrir el formulario de gestión de categorías como diálogo modal
+            using (FrmGestionCategorias frmCategorias = new FrmGestionCategorias())
+            {
+                frmCategorias.ShowDialog(); // Muestra el formulario como modal
+            }
+
+            // Recargar los combos de categorías después de cerrar el formulario
+            CargarCombos();
+        }
+
         #endregion
 
-       
+
 
     }
 }

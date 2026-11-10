@@ -39,6 +39,7 @@
             this.BTN_Form_Users = new FontAwesome.Sharp.IconButton();
             this.BTN_Form_Cliente = new FontAwesome.Sharp.IconButton();
             this.BTN_Form_Prov = new FontAwesome.Sharp.IconButton();
+            this.BTN_Form_Login = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.topbar.SuspendLayout();
             this.PanelPrincipal.SuspendLayout();
@@ -132,16 +133,18 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.BTN_Form_Login, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.BTN_Form_Prov, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.BTN_Form_Cliente, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.BTN_Form_Users, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(152, 71);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(152, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 260);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 340);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // BTN_Form_Users
@@ -156,7 +159,7 @@
             this.BTN_Form_Users.IconSize = 34;
             this.BTN_Form_Users.Location = new System.Drawing.Point(3, 3);
             this.BTN_Form_Users.Name = "BTN_Form_Users";
-            this.BTN_Form_Users.Size = new System.Drawing.Size(314, 80);
+            this.BTN_Form_Users.Size = new System.Drawing.Size(314, 79);
             this.BTN_Form_Users.TabIndex = 0;
             this.BTN_Form_Users.Text = "Administrar Usuarios";
             this.BTN_Form_Users.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -173,9 +176,9 @@
             this.BTN_Form_Cliente.IconColor = System.Drawing.Color.White;
             this.BTN_Form_Cliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BTN_Form_Cliente.IconSize = 34;
-            this.BTN_Form_Cliente.Location = new System.Drawing.Point(3, 89);
+            this.BTN_Form_Cliente.Location = new System.Drawing.Point(3, 88);
             this.BTN_Form_Cliente.Name = "BTN_Form_Cliente";
-            this.BTN_Form_Cliente.Size = new System.Drawing.Size(314, 80);
+            this.BTN_Form_Cliente.Size = new System.Drawing.Size(314, 79);
             this.BTN_Form_Cliente.TabIndex = 1;
             this.BTN_Form_Cliente.Text = "Administrar Clientes";
             this.BTN_Form_Cliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -192,14 +195,33 @@
             this.BTN_Form_Prov.IconColor = System.Drawing.Color.White;
             this.BTN_Form_Prov.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BTN_Form_Prov.IconSize = 34;
-            this.BTN_Form_Prov.Location = new System.Drawing.Point(3, 175);
+            this.BTN_Form_Prov.Location = new System.Drawing.Point(3, 173);
             this.BTN_Form_Prov.Name = "BTN_Form_Prov";
-            this.BTN_Form_Prov.Size = new System.Drawing.Size(314, 82);
+            this.BTN_Form_Prov.Size = new System.Drawing.Size(314, 79);
             this.BTN_Form_Prov.TabIndex = 2;
             this.BTN_Form_Prov.Text = "Administrar Proveedores";
             this.BTN_Form_Prov.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTN_Form_Prov.UseVisualStyleBackColor = true;
             this.BTN_Form_Prov.Click += new System.EventHandler(this.BTN_Form_Prov_Click);
+            // 
+            // BTN_Form_Login
+            // 
+            this.BTN_Form_Login.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_Form_Login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_Form_Login.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Form_Login.ForeColor = System.Drawing.Color.White;
+            this.BTN_Form_Login.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.BTN_Form_Login.IconColor = System.Drawing.Color.White;
+            this.BTN_Form_Login.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_Form_Login.IconSize = 34;
+            this.BTN_Form_Login.Location = new System.Drawing.Point(3, 258);
+            this.BTN_Form_Login.Name = "BTN_Form_Login";
+            this.BTN_Form_Login.Size = new System.Drawing.Size(314, 79);
+            this.BTN_Form_Login.TabIndex = 3;
+            this.BTN_Form_Login.Text = "Gestión de Login";
+            this.BTN_Form_Login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_Form_Login.UseVisualStyleBackColor = true;
+            this.BTN_Form_Login.Click += new System.EventHandler(this.BTN_Form_Login_Click);
             // 
             // FrmRecursosHumanos
             // 
@@ -235,5 +257,6 @@
         private FontAwesome.Sharp.IconButton BTN_Form_Prov;
         private FontAwesome.Sharp.IconButton BTN_Form_Cliente;
         private FontAwesome.Sharp.IconButton BTN_Form_Users;
+        private FontAwesome.Sharp.IconButton BTN_Form_Login;
     }
 }

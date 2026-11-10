@@ -53,7 +53,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.TXT_Descripcion = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.CMB_Cod_Art = new System.Windows.Forms.ComboBox();
+            this.CMB_Nombre_Prod = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.NUP_Cantidad = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,7 +92,7 @@
             this.PanelPrincipal.Controls.Add(this.panel1);
             this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.PanelPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.PanelPrincipal.Name = "PanelPrincipal";
             this.PanelPrincipal.Size = new System.Drawing.Size(919, 612);
             this.PanelPrincipal.TabIndex = 6;
@@ -151,7 +151,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Location = new System.Drawing.Point(0, 47);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(917, 562);
             this.panel3.TabIndex = 3;
@@ -290,9 +290,9 @@
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel4);
             this.groupBox3.Location = new System.Drawing.Point(514, 6);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(388, 223);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -310,11 +310,11 @@
             this.tableLayoutPanel4.Controls.Add(this.label10, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.TXT_Descripcion, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label9, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.CMB_Cod_Art, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.CMB_Nombre_Prod, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.NUP_Cantidad, 1, 2);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 20);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 5;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -393,14 +393,14 @@
             this.label9.Text = "Descripción:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CMB_Cod_Art
+            // CMB_Nombre_Prod
             // 
-            this.CMB_Cod_Art.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CMB_Cod_Art.FormattingEnabled = true;
-            this.CMB_Cod_Art.Location = new System.Drawing.Point(193, 5);
-            this.CMB_Cod_Art.Name = "CMB_Cod_Art";
-            this.CMB_Cod_Art.Size = new System.Drawing.Size(184, 29);
-            this.CMB_Cod_Art.TabIndex = 5;
+            this.CMB_Nombre_Prod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CMB_Nombre_Prod.FormattingEnabled = true;
+            this.CMB_Nombre_Prod.Location = new System.Drawing.Point(193, 5);
+            this.CMB_Nombre_Prod.Name = "CMB_Nombre_Prod";
+            this.CMB_Nombre_Prod.Size = new System.Drawing.Size(184, 29);
+            this.CMB_Nombre_Prod.TabIndex = 5;
             // 
             // label8
             // 
@@ -410,13 +410,13 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(184, 39);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Código:";
+            this.label8.Text = "Nombre:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NUP_Cantidad
             // 
             this.NUP_Cantidad.Location = new System.Drawing.Point(192, 80);
-            this.NUP_Cantidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUP_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.NUP_Cantidad.Name = "NUP_Cantidad";
             this.NUP_Cantidad.Size = new System.Drawing.Size(158, 29);
             this.NUP_Cantidad.TabIndex = 17;
@@ -631,7 +631,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TXT_Descripcion;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox CMB_Cod_Art;
+        private System.Windows.Forms.ComboBox CMB_Nombre_Prod;
         private System.Windows.Forms.NumericUpDown NUP_Cantidad;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BTN_Cancelar;

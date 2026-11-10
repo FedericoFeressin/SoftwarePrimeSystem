@@ -41,6 +41,8 @@
             this.BTN_Guardar_Venta = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.CMB_Articulos = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.TXT_Cantidad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.TXT_Precio_Unitario = new System.Windows.Forms.TextBox();
@@ -93,7 +95,7 @@
             this.panel1.Controls.Add(this.topbar);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1225, 751);
             this.panel1.TabIndex = 0;
@@ -105,7 +107,7 @@
             this.topbar.Controls.Add(this.label6);
             this.topbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.topbar.Location = new System.Drawing.Point(0, 0);
-            this.topbar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topbar.Margin = new System.Windows.Forms.Padding(4);
             this.topbar.Name = "topbar";
             this.topbar.Size = new System.Drawing.Size(1225, 58);
             this.topbar.TabIndex = 20;
@@ -120,7 +122,7 @@
             this.Btn_volver.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Btn_volver.IconSize = 32;
             this.Btn_volver.Location = new System.Drawing.Point(4, 4);
-            this.Btn_volver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_volver.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_volver.Name = "Btn_volver";
             this.Btn_volver.Size = new System.Drawing.Size(60, 48);
             this.Btn_volver.TabIndex = 19;
@@ -159,9 +161,9 @@
             this.groupBox2.Controls.Add(this.BTN_Agregar_Art);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(13, 7);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1199, 672);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
@@ -206,6 +208,7 @@
             this.BTN_Eliminar_Venta.TabIndex = 7;
             this.BTN_Eliminar_Venta.Text = "Cancelar Venta";
             this.BTN_Eliminar_Venta.UseVisualStyleBackColor = false;
+            this.BTN_Eliminar_Venta.Click += new System.EventHandler(this.BTN_Eliminar_Venta_Click);
             // 
             // BTN_Guardar_Venta
             // 
@@ -232,31 +235,60 @@
             this.groupBox1.Size = new System.Drawing.Size(476, 268);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detalle del articulo:";
+            this.groupBox1.Text = "Seleccione el artículo:";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.TXT_Cantidad, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.TXT_Precio_Unitario, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.TXT_Descripcion, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.TXT_Cod_Art, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TXT_Cantidad, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.TXT_Precio_Unitario, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.TXT_Descripcion, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TXT_Cod_Art, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CMB_Articulos, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 26);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 236);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // CMB_Articulos
+            // 
+            this.CMB_Articulos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CMB_Articulos.BackColor = System.Drawing.SystemColors.Menu;
+            this.CMB_Articulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMB_Articulos.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMB_Articulos.FormattingEnabled = true;
+            this.CMB_Articulos.Location = new System.Drawing.Point(235, 8);
+            this.CMB_Articulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CMB_Articulos.Name = "CMB_Articulos";
+            this.CMB_Articulos.Size = new System.Drawing.Size(226, 36);
+            this.CMB_Articulos.TabIndex = 13;
+            this.CMB_Articulos.SelectedIndexChanged += new System.EventHandler(this.CMB_Articulos_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(226, 47);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Seleccionar Artículo:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TXT_Cantidad
             // 
@@ -347,9 +379,9 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Location = new System.Drawing.Point(3, 47);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(226, 59);
+            this.label5.Size = new System.Drawing.Size(226, 47);
             this.label5.TabIndex = 1;
             this.label5.Text = "Código Articulo:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -381,7 +413,7 @@
             this.tableLayoutPanel2.Controls.Add(this.CMB_Clientes, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.DT_Fecha, 1, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 33);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
@@ -534,7 +566,7 @@
             this.ClientSize = new System.Drawing.Size(1225, 751);
             this.Controls.Add(this.PanelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
             this.Load += new System.EventHandler(this.FrmVentas_Load);
@@ -592,5 +624,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TXT_Descripcion;
         private System.Windows.Forms.DataGridView dgv_Ventas;
+        private System.Windows.Forms.ComboBox CMB_Articulos;
+        private System.Windows.Forms.Label label11;
     }
 }

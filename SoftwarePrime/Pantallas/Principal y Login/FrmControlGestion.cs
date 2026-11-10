@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using SoftwarePrime;
 using SoftwarePrime.Pantallas.Clientes;
 using SoftwarePrime.Pantallas.Articulos;
+using SoftwarePrime.Pantallas.Login;
 using FontAwesome.Sharp;
 
 namespace SoftwarePrime
@@ -52,6 +53,12 @@ namespace SoftwarePrime
 
         private void BTN_Articulos_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerArticulos())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmArticulos frmArticulos = new FrmArticulos();
             frmArticulos.TopLevel = false;
@@ -62,6 +69,12 @@ namespace SoftwarePrime
         }
         private void btn_Clientes_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerClientes())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmAltaClientes frmAltaClientes = new FrmAltaClientes();
             frmAltaClientes.TopLevel = false;
@@ -73,6 +86,12 @@ namespace SoftwarePrime
 
         private void btn_Compras_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerCompras())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmCompras frmcompras = new FrmCompras();
             frmcompras.TopLevel = false;
@@ -84,6 +103,12 @@ namespace SoftwarePrime
 
         private void btn_Ventas_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerVentas())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmVentas frmVentas = new FrmVentas();
             frmVentas.TopLevel = false;
@@ -95,6 +120,12 @@ namespace SoftwarePrime
 
         private void btn_RRHH_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeGestionarRoles())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmRecursosHumanos frmRecursosHumanos = new FrmRecursosHumanos();
             frmRecursosHumanos.TopLevel = false;
@@ -106,6 +137,12 @@ namespace SoftwarePrime
 
         private void btn_Proveedores_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerProveedores())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmProveedores frmProveedores = new FrmProveedores();
             frmProveedores.TopLevel = false;
@@ -120,6 +157,12 @@ namespace SoftwarePrime
 
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
+            if (!PermisosUsuario.PuedeVerUsuarios())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PanelVista.Controls.Clear();
             FrmUsuarios frmUsuarios = new FrmUsuarios();
             frmUsuarios.TopLevel = false;
@@ -155,9 +198,14 @@ namespace SoftwarePrime
 
         private void Btn_Desconectar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Login frmLogin = new Login();
-            frmLogin.Show();
+            DialogResult resultado = MessageBox.Show("¿Desea cerrar sesión?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                SesionActual.LimpiarSesion();
+                this.Close();
+                Login frmLogin = new Login();
+                frmLogin.Show();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -168,6 +216,23 @@ namespace SoftwarePrime
         private void BTN_Inicio_Click(object sender, EventArgs e)
         {
             MostrarBienvenida();
+        }
+
+        private void BTN_EstadoContable_Click(object sender, EventArgs e)
+        {
+            if (!PermisosUsuario.PuedeVerReportes())
+            {
+                MessageBox.Show(PermisosUsuario.MensajeAccesoDenegado(), "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            PanelVista.Controls.Clear();
+            SoftwarePrime.Pantallas.EstadoContable.FrmEstadoContable frmEstadoContable = new SoftwarePrime.Pantallas.EstadoContable.FrmEstadoContable();
+            frmEstadoContable.TopLevel = false;
+            frmEstadoContable.FormBorderStyle = FormBorderStyle.None;
+            frmEstadoContable.Dock = DockStyle.Fill;
+            PanelVista.Controls.Add(frmEstadoContable);
+            frmEstadoContable.Show();
         }
 
         #endregion
@@ -234,31 +299,23 @@ namespace SoftwarePrime
         }
         public  void configurarRol()
         {
+            // Ocultar todos los botones por defecto
             btn_Clientes.Visible = false;
             btn_Compras.Visible = false;
             btn_Proveedores.Visible = false;
             btn_RRHH.Visible = false;
             btn_Usuarios.Visible = false;
             btn_Ventas.Visible = false;
+            BTN_Articulos.Visible = false;
 
-            if (Rol == "ADMINISTRADOR")
-            {
-                btn_Clientes.Visible = true;
-                btn_Compras.Visible = true;
-                btn_Proveedores.Visible = true;
-                btn_RRHH.Visible = true;
-                btn_Usuarios.Visible = true;
-                btn_Ventas.Visible = true;
-
-            }
-            else if (Rol == "EMPLEADO")
-            {
-                btn_Clientes.Visible = true;
-                btn_Compras.Visible = true;
-                btn_Proveedores.Visible = true;
-                btn_Ventas.Visible = true;
-            }
-            
+            // Mostrar botones según permisos
+            btn_Clientes.Visible = PermisosUsuario.PuedeVerClientes();
+            btn_Compras.Visible = PermisosUsuario.PuedeVerCompras();
+            btn_Proveedores.Visible = PermisosUsuario.PuedeVerProveedores();
+            btn_RRHH.Visible = PermisosUsuario.PuedeGestionarRoles();
+            btn_Usuarios.Visible = PermisosUsuario.PuedeVerUsuarios();
+            btn_Ventas.Visible = PermisosUsuario.PuedeVerVentas();
+            BTN_Articulos.Visible = PermisosUsuario.PuedeVerArticulos();
         }
 
 

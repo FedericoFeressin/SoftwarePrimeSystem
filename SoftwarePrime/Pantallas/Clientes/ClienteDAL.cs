@@ -12,61 +12,101 @@ namespace SoftwarePrime.Pantallas.Clientes
     public class ClienteDAL
     {
         // 🔹 AGREGAR CLIENTE
-        public static void AgregarCliente(ModeloCliente cliente)
+        public static bool AgregarCliente(ModeloCliente cliente)
         {
-            using (SqlConnection conn = ConexionBD.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "INSERT INTO Clientes (Cuit, Nombre, Entidad, Telefono, Mail) " +
-                               "VALUES (@Cuit, @Nombre, @Entidad, @Telefono, @Mail)";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = ConexionBD.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@Cuit", cliente.Cuit);
-                    cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-                    cmd.Parameters.AddWithValue("@Entidad", cliente.Entidad);
-                    cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
-                    cmd.Parameters.AddWithValue("@Mail", cliente.Mail);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    string query = @"INSERT INTO Cliente (CUIT, Nombre, Apellido, ID_Entidad, Telefono, Email, Direccion, Activo, FechaCreacion) 
+                                    VALUES (@Cuit, @Nombre, @Apellido, @ID_Entidad, @Telefono, @Email, @Direccion, @Activo, @FechaCreacion)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Cuit", (object)cliente.CUIT ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Nombre", (object)cliente.Nombre ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Apellido", (object)cliente.Apellido ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ID_Entidad", (object)cliente.ID_Entidad ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Telefono", (object)cliente.Telefono ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Email", (object)cliente.Email ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Direccion", (object)cliente.Direccion ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Activo", 1);
+                        cmd.Parameters.AddWithValue("@FechaCreacion", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error al agregar cliente: " + ex.Message);
+                return false;
             }
         }
 
         // 🔹 MODIFICAR CLIENTE
-        public static void ModificarCliente(ModeloCliente cliente)
+        public static bool ModificarCliente(ModeloCliente cliente)
         {
-            using (SqlConnection conn = ConexionBD.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "UPDATE Clientes SET Cuit=@Cuit, Nombre=@Nombre, Entidad=@Entidad, Telefono=@Telefono, Mail=@Mail " +
-                               "WHERE ID_Clientes=@ID_Clientes";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = ConexionBD.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@ID_Clientes", cliente.ID_Clientes);
-                    cmd.Parameters.AddWithValue("@Cuit", cliente.Cuit);
-                    cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-                    cmd.Parameters.AddWithValue("@Entidad", cliente.Entidad);
-                    cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
-                    cmd.Parameters.AddWithValue("@Mail", cliente.Mail);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    string query = @"UPDATE Cliente 
+                                    SET CUIT=@Cuit, Nombre=@Nombre, Apellido=@Apellido, 
+                                        ID_Entidad=@ID_Entidad, Telefono=@Telefono, Email=@Email, 
+                                        Direccion=@Direccion, FechaModificacion=@FechaModificacion
+                                    WHERE ID_Cliente=@ID_Cliente";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ID_Cliente", cliente.ID_Cliente);
+                        cmd.Parameters.AddWithValue("@Cuit", (object)cliente.CUIT ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Nombre", (object)cliente.Nombre ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Apellido", (object)cliente.Apellido ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ID_Entidad", (object)cliente.ID_Entidad ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Telefono", (object)cliente.Telefono ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Email", (object)cliente.Email ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Direccion", (object)cliente.Direccion ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@FechaModificacion", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error al modificar cliente: " + ex.Message);
+                return false;
             }
         }
 
-        // 🔹 ELIMINAR CLIENTE
-        public static void EliminarCliente(int idCliente)
+        // 🔹 ELIMINAR CLIENTE (Soft Delete)
+        public static bool EliminarCliente(int idCliente)
         {
-            using (SqlConnection conn = ConexionBD.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "DELETE FROM Clientes WHERE ID_Clientes=@ID_Clientes";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = ConexionBD.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@ID_Clientes", idCliente);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    string query = @"UPDATE Cliente 
+                                    SET Activo = 0, FechaModificacion = @FechaModificacion 
+                                    WHERE ID_Cliente=@ID_Cliente";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ID_Cliente", idCliente);
+                        cmd.Parameters.AddWithValue("@FechaModificacion", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error al eliminar cliente: " + ex.Message);
+                return false;
             }
         }
 
@@ -75,11 +115,27 @@ namespace SoftwarePrime.Pantallas.Clientes
             using (SqlConnection conn = ConexionBD.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT * FROM Clientes";
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
+                string query = @"SELECT 
+                                    C.ID_Cliente, 
+                                    C.CUIT, 
+                                    C.Nombre, 
+                                    C.Apellido, 
+                                    C.ID_Entidad,
+                                    E.Nombre AS NombreEntidad,
+                                    C.Telefono, 
+                                    C.Email, 
+                                    C.Direccion,
+                                    C.Activo 
+                                FROM Cliente C
+                                LEFT JOIN Entidad E ON C.ID_Entidad = E.ID_Entidad
+                                WHERE C.Activo = 1 
+                                ORDER BY C.Nombre";
+                using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
             }
         }
 
@@ -88,11 +144,16 @@ namespace SoftwarePrime.Pantallas.Clientes
             using (SqlConnection conn = ConexionBD.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT * FROM Entidades ORDER BY Nombre_Entidad;";
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
+                string query = @"SELECT ID_Entidad, Nombre 
+                                FROM Entidad 
+                                WHERE Activo = 1 
+                                ORDER BY Nombre";
+                using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
             }
         }
 

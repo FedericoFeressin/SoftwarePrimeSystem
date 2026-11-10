@@ -14,18 +14,15 @@ namespace SoftwarePrime.Pantallas.Ventas
         public DateTime Fecha_Hora { get; set; }
         public decimal Subtotal { get; set; }
         public decimal Descuento { get; set; }
-        public decimal Total { get; set; }
+        public decimal Total => Subtotal - Descuento; // Propiedad calculada
 
-        public ModeloVentas(int codUsuario, int idCliente, DateTime fecha, decimal subtotal, decimal descuento, decimal total)
+        public ModeloVentas(int codUsuario, int idCliente, DateTime fecha, decimal subtotal, decimal descuento)
         {
             Cod_Usuario = codUsuario;
             ID_Cliente = idCliente;
             Fecha_Hora = fecha;
             Subtotal = subtotal;
             Descuento = descuento;
-            Total = total;
         }
-
-
     }
 }

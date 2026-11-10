@@ -11,19 +11,27 @@ namespace SoftwarePrime.Pantallas.Compras
         public int IdRemito { get; set; }
         public int IdProveedor { get; set; }
         public int IdUsuario { get; set; }
+        public int? IdCategoria { get; set; }
         public DateTime Fecha { get; set; }
+        public string TipoComprobante { get; set; }
+        public string NumeroComprobante { get; set; }
         public decimal Subtotal { get; private set; }
         public decimal Descuento { get; set; }
         public decimal Total => Subtotal - Descuento; // Propiedad calculada para el total
+        public string Observaciones { get; set; }
+        public DateTime FechaRegistro { get; set; }
 
         public List<DetalleCompra> Detalles { get; private set; } // Lista de detalles de la compra
 
-        public Compra(int idProveedor, int idUsuario, decimal descuento = 0) // Constructor
+        public Compra(int idProveedor, int idUsuario, int? idCategoria = null, decimal descuento = 0) // Constructor
         {
             IdProveedor = idProveedor;
             IdUsuario = idUsuario;
+            IdCategoria = idCategoria;
             Fecha = DateTime.Now;
+            FechaRegistro = DateTime.Now;
             Descuento = descuento;
+            TipoComprobante = "Factura";
             Detalles = new List<DetalleCompra>(); // Inicializar la lista de detalles
             Subtotal = 0;
         }

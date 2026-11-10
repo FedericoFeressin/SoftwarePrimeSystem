@@ -1,5 +1,6 @@
 ﻿using Conexion_Base_de_Datos;
 using SoftwarePrime.Pantallas.Usuario;
+using SoftwarePrime;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,9 @@ namespace SoftwarePrime.Pantallas
             MostrarUsuarios();
             GrillaUsers.CellClick += GrillaUsers_CellClick; 
             EstilizarGrilla();
+
+            // Establecer "Activo" como estado por defecto para nuevos usuarios
+            RB_Activo.Checked = true;
         }
 
         #region Eventos Clicks
@@ -122,6 +126,8 @@ namespace SoftwarePrime.Pantallas
 
         private void Btn_volver_Click(object sender, EventArgs e)
         {
+            FrmControlGestion principal = (FrmControlGestion)this.ParentForm;
+            principal.MostrarBienvenida();
             this.Close();
         }
 
@@ -149,7 +155,7 @@ namespace SoftwarePrime.Pantallas
             TXT_Email.Text = fila.Cells["Email"].Value?.ToString() ?? ""; // Usar email de columna
             TXT_Telf.Text = fila.Cells["Telefono"].Value?.ToString() ?? ""; // Usar teléfono de columna
             Combo_Rol.Text = fila.Cells["TipoUsuario"].Value?.ToString() ?? ""; // Usar tipo de usuario de columna
-            RB_Activo.Checked = Convert.ToBoolean(fila.Cells["Activo"].Value); // Usar estado activo de columna
+                RB_Activo.Checked = Convert.ToBoolean(fila.Cells["Activo"].Value); // Usar estado activo de columna
 
 
             Combo_Rol.SelectedIndex = (Combo_Rol.Text == "Empleado") ? 0 : 1; // Ajustar según los valores reales
@@ -174,14 +180,16 @@ namespace SoftwarePrime.Pantallas
             TXT_Telf.Clear();
             TXT_Email.Clear();
             Combo_Rol.SelectedIndex = -1;
-            RB_Activo.Checked = false;
+
+            // Establecer "Activo" por defecto al limpiar el formulario
+            RB_Activo.Checked = true;
             RB_Inactivo.Checked = false;
         }
 
         private void MostrarUsuarios()
         {
             SentenciasUsuario sentencias = new SentenciasUsuario();
-            GrillaUsers.DataSource = sentencias.MostrarUsuarios();
+            GrillaUsers.DataSource = sentencias.MostrarTodosUsuarios();
         }
 
         private void CargarTiposUsuario()
@@ -244,10 +252,12 @@ namespace SoftwarePrime.Pantallas
                 return false;
             }
 
+            // La validación del estado ya no es necesaria porque RB_Activo está marcado por defecto
+            // Pero la mantenemos por seguridad
             if (!RB_Activo.Checked && !RB_Inactivo.Checked)
             {
-                MessageBox.Show("Seleccione el estado del usuario.");
-                return false;
+                MessageBox.Show("Seleccione el estado del usuario (Activo/Inactivo).");
+                RB_Activo.Checked = true; // Marcar activo por defecto
             }
 
             return true; // Todo correcto

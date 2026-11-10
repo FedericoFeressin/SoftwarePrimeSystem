@@ -42,6 +42,7 @@
             this.btn_Ventas = new FontAwesome.Sharp.IconButton();
             this.btn_Compras = new FontAwesome.Sharp.IconButton();
             this.btn_Clientes = new FontAwesome.Sharp.IconButton();
+            this.BTN_EstadoContable = new FontAwesome.Sharp.IconButton();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Btn_Minimizar = new FontAwesome.Sharp.IconButton();
@@ -105,21 +106,23 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_Ventas, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btn_Compras, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btn_Clientes, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.Btn_Desconectar, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.BTN_EstadoContable, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.Btn_Desconectar, 0, 9);
             this.tableLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(-1, 60);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0001F));
+            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.0909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(339, 737);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -209,6 +212,28 @@
             this.btn_Proveedores.Text = "Proveedores";
             this.btn_Proveedores.UseVisualStyleBackColor = true;
             this.btn_Proveedores.Click += new System.EventHandler(this.btn_Proveedores_Click);
+            // 
+            // BTN_EstadoContable
+            // 
+            this.BTN_EstadoContable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_EstadoContable.FlatAppearance.BorderSize = 0;
+            this.BTN_EstadoContable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.BTN_EstadoContable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_EstadoContable.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_EstadoContable.ForeColor = System.Drawing.Color.White;
+            this.BTN_EstadoContable.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.BTN_EstadoContable.IconColor = System.Drawing.Color.White;
+            this.BTN_EstadoContable.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_EstadoContable.IconSize = 32;
+            this.BTN_EstadoContable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTN_EstadoContable.Location = new System.Drawing.Point(3, 488);
+            this.BTN_EstadoContable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BTN_EstadoContable.Name = "BTN_EstadoContable";
+            this.BTN_EstadoContable.Size = new System.Drawing.Size(333, 77);
+            this.BTN_EstadoContable.TabIndex = 18;
+            this.BTN_EstadoContable.Text = "Estado Contable";
+            this.BTN_EstadoContable.UseVisualStyleBackColor = true;
+            this.BTN_EstadoContable.Click += new System.EventHandler(this.BTN_EstadoContable_Click);
             // 
             // btn_RRHH
             // 
@@ -568,5 +593,6 @@
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton BTN_Inicio;
         private FontAwesome.Sharp.IconButton BTN_Articulos;
+        private FontAwesome.Sharp.IconButton BTN_EstadoContable;
     }
 }

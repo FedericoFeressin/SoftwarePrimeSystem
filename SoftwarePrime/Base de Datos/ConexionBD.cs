@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Configuration;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data;
 
 namespace Conexion_Base_de_Datos
 {
@@ -13,19 +8,25 @@ namespace Conexion_Base_de_Datos
     {
 
         #region ConexionesBD
-        
-        private static string datasource = "DESKTOP-D2AKA1A\\SQLEXPRESS";
-        private static string database = "Prime System";
+
+        private const string ConnectionStringName = "PrimeSystem";
 
         // Método para obtener una NUEVA conexión
         public static SqlConnection GetConnection()
         {
-            string connectionString = $"Data Source={datasource};Initial Catalog={database};Trusted_Connection=True;";
-            return new SqlConnection(connectionString); //NO abrirla aquí
+            ConnectionStringSettings config =
+                ConfigurationManager.ConnectionStrings[ConnectionStringName];
+
+            if (config == null || string.IsNullOrWhiteSpace(config.ConnectionString))
+            {
+                throw new InvalidOperationException(
+                    $"No se encontró la cadena de conexión '{ConnectionStringName}' en App.config.");
+            }
+
+            return new SqlConnection(config.ConnectionString); //NO abrirla aquí
         }
 
         #endregion
 
-        
     }
 }

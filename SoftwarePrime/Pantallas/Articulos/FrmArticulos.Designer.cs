@@ -54,6 +54,7 @@
             this.BTN_Eliminar = new FontAwesome.Sharp.IconButton();
             this.BTN_Modificar = new FontAwesome.Sharp.IconButton();
             this.BTN_Agregar = new FontAwesome.Sharp.IconButton();
+            this.BTN_GestionarCategorias = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -339,13 +340,15 @@
             this.tableLayoutPanel1.Controls.Add(this.BTN_Eliminar, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.BTN_Modificar, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.BTN_Agregar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BTN_GestionarCategorias, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(617, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(243, 141);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(243, 188);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // BTN_Eliminar
@@ -412,13 +415,35 @@
             this.BTN_Agregar.UseVisualStyleBackColor = false;
             this.BTN_Agregar.Click += new System.EventHandler(this.BTN_Agregar_Click);
             // 
+            // BTN_GestionarCategorias
+            // 
+            this.BTN_GestionarCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.BTN_GestionarCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTN_GestionarCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_GestionarCategorias.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_GestionarCategorias.ForeColor = System.Drawing.Color.White;
+            this.BTN_GestionarCategorias.IconChar = FontAwesome.Sharp.IconChar.Tags;
+            this.BTN_GestionarCategorias.IconColor = System.Drawing.Color.White;
+            this.BTN_GestionarCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_GestionarCategorias.IconSize = 30;
+            this.BTN_GestionarCategorias.Location = new System.Drawing.Point(3, 144);
+            this.BTN_GestionarCategorias.Name = "BTN_GestionarCategorias";
+            this.BTN_GestionarCategorias.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BTN_GestionarCategorias.Size = new System.Drawing.Size(237, 41);
+            this.BTN_GestionarCategorias.TabIndex = 3;
+            this.BTN_GestionarCategorias.Text = "Categorías";
+            this.BTN_GestionarCategorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_GestionarCategorias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_GestionarCategorias.UseVisualStyleBackColor = false;
+            this.BTN_GestionarCategorias.Click += new System.EventHandler(this.BTN_GestionarCategorias_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.Grilla_Articulos);
             this.panel3.Location = new System.Drawing.Point(0, 47);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(919, 561);
             this.panel3.TabIndex = 3;
@@ -479,7 +504,7 @@
             this.PanelPrincipal.Controls.Add(this.panel1);
             this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.PanelPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.PanelPrincipal.Name = "PanelPrincipal";
             this.PanelPrincipal.Size = new System.Drawing.Size(919, 610);
             this.PanelPrincipal.TabIndex = 7;
@@ -540,6 +565,7 @@
         private FontAwesome.Sharp.IconButton BTN_Eliminar;
         private FontAwesome.Sharp.IconButton BTN_Modificar;
         private FontAwesome.Sharp.IconButton BTN_Agregar;
+        private FontAwesome.Sharp.IconButton BTN_GestionarCategorias;
         private System.Windows.Forms.Label LBL_PrecioVenta;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CMB_Prov;

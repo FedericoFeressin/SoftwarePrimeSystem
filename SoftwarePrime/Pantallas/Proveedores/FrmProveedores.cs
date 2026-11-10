@@ -1,4 +1,5 @@
 ﻿using SoftwarePrime.Pantallas.Proveedores;
+using SoftwarePrime;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace SoftwarePrime.Pantallas
         #region Eventos Clicks
         private void Btn_volver_Click(object sender, EventArgs e)
         {
+            FrmControlGestion principal = (FrmControlGestion)this.ParentForm;
+            principal.MostrarBienvenida();
             this.Close();
         }
 
@@ -58,15 +61,15 @@ namespace SoftwarePrime.Pantallas
             {
                 try
                 {
-                    ModeloProveedores nuevo = new ModeloProveedores( // Crear nuevo objeto proveedor
-                        long.Parse(TXT_Cuit.Text), // Convertir CUIT a long
-                        TXT_Prov.Text, // Asignar nombre del proveedor
-                        TEXT_Nom.Text, // Asignar nombre de contacto
-                        TXT_TEL.Text, // Asignar teléfono
-                        TXT_Email.Text // Asignar email
-                    );
+                    ModeloProveedores nuevo = new ModeloProveedores(); // Crear nuevo objeto proveedor
+                    nuevo.CUIT = long.Parse(TXT_Cuit.Text); // Convertir CUIT a long
+                    nuevo.RazonSocial = TXT_Prov.Text; // Asignar razón social
+                    nuevo.Nombre = TEXT_Nom.Text; // Asignar nombre
+                    nuevo.Telefono = TXT_TEL.Text; // Asignar teléfono
+                    nuevo.Email = TXT_Email.Text; // Asignar email
+                    nuevo.Activo = true; // Proveedor activo
 
-                    ProveedorDAL.AgregarProveedor(nuevo); // Llamar al método DAL para agregar el proveedor
+                    ProveedorDAL.AgregarProveedor(nuevo, SoftwarePrime.Pantallas.Login.SesionActual.ID_Usuario); // Llamar al método DAL para agregar el proveedor
                     MessageBox.Show("Proveedor agregado correctamente.", "Éxito"); 
 
                     CargarGrillaProveedores();
@@ -90,16 +93,16 @@ namespace SoftwarePrime.Pantallas
                 {
                     try
                     {
-                        ModeloProveedores mod = new ModeloProveedores( // Crear objeto proveedor modificado
-                            Convert.ToInt32(GrillaProv.CurrentRow.Cells["ID_Proveedor"].Value), // Obtener ID del proveedor seleccionado
-                            long.Parse(TXT_Cuit.Text), // Convertir CUIT a long
-                            TXT_Prov.Text, // Asignar nombre del proveedor
-                            TEXT_Nom.Text, // Asignar nombre de contacto
-                            TXT_TEL.Text, // Asignar teléfono
-                            TXT_Email.Text // Asignar email
-                        );
+                        ModeloProveedores mod = new ModeloProveedores(); // Crear objeto proveedor modificado
+                        mod.ID_Proveedor = Convert.ToInt32(GrillaProv.CurrentRow.Cells["ID_Proveedor"].Value); // Obtener ID del proveedor seleccionado
+                        mod.CUIT = long.Parse(TXT_Cuit.Text); // Convertir CUIT a long
+                        mod.RazonSocial = TXT_Prov.Text; // Asignar razón social
+                        mod.Nombre = TEXT_Nom.Text; // Asignar nombre
+                        mod.Telefono = TXT_TEL.Text; // Asignar teléfono
+                        mod.Email = TXT_Email.Text; // Asignar email
+                        mod.Activo = true; // Mantener activo
 
-                        ProveedorDAL.ModificarProveedor(mod); // Llamar al método DAL para modificar el proveedor
+                        ProveedorDAL.ModificarProveedor(mod, SoftwarePrime.Pantallas.Login.SesionActual.ID_Usuario); // Llamar al método DAL para modificar el proveedor
                         MessageBox.Show("Proveedor modificado correctamente.", "Éxito");
                         CargarGrillaProveedores();
                         LimpiarCampos();
@@ -128,7 +131,7 @@ namespace SoftwarePrime.Pantallas
                     try
                     {
                         int id = Convert.ToInt32(GrillaProv.CurrentRow.Cells["ID_Proveedor"].Value); // Obtener ID del proveedor seleccionado
-                        ProveedorDAL.EliminarProveedor(id); // Llamar al método DAL para eliminar el proveedor
+                        ProveedorDAL.EliminarProveedor(id, SoftwarePrime.Pantallas.Login.SesionActual.ID_Usuario); // Llamar al método DAL para eliminar el proveedor (soft delete)
                         MessageBox.Show("Proveedor eliminado correctamente.", "Éxito");
                         CargarGrillaProveedores();
                         LimpiarCampos();
@@ -155,8 +158,8 @@ namespace SoftwarePrime.Pantallas
                 DataGridViewRow filaSeleccionada = GrillaProv.Rows[e.RowIndex]; 
 
                 // Asignar valores a los TextBox
-                TXT_Cuit.Text = filaSeleccionada.Cells["Cuit"].Value?.ToString();
-                TXT_Prov.Text = filaSeleccionada.Cells["Proveedor"].Value?.ToString();
+                TXT_Cuit.Text = filaSeleccionada.Cells["CUIT"].Value?.ToString();
+                TXT_Prov.Text = filaSeleccionada.Cells["RazonSocial"].Value?.ToString();
                 TEXT_Nom.Text = filaSeleccionada.Cells["Nombre"].Value?.ToString();
                 TXT_TEL.Text = filaSeleccionada.Cells["Telefono"].Value?.ToString();
                 TXT_Email.Text = filaSeleccionada.Cells["Email"].Value?.ToString();

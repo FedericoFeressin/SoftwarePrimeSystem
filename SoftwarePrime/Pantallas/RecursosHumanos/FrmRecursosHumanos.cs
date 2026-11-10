@@ -1,5 +1,7 @@
 ﻿using SoftwarePrime.Pantallas;
 using SoftwarePrime.Pantallas.Clientes;
+using SoftwarePrime.Pantallas.RecursosHumanos;
+using SoftwarePrime;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,8 +52,17 @@ namespace SoftwarePrime.Pantallas
             principalPROV.AbrirFormularioEnPanel(frm); // Llamar al método para abrir el formulario en el panel
         }
 
+        private void BTN_Form_Login_Click(object sender, EventArgs e)
+        {
+            FrmGestionLogin frm = new FrmGestionLogin();
+            FrmControlGestion principalLogin = (FrmControlGestion)this.ParentForm;
+            principalLogin.AbrirFormularioEnPanel(frm);
+        }
+
         private void Btn_volver_Click(object sender, EventArgs e)
         {
+            FrmControlGestion principal = (FrmControlGestion)this.ParentForm;
+            principal.MostrarBienvenida();
             this.Close();
         }
         #endregion
